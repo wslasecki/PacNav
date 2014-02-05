@@ -1,0 +1,65 @@
+<html><head>
+<title>Audio Transcript</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script><style type="text/css"></style>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<!--script type="text/javascript" src="http://code.google.com/p/jquery-color-utils/downloads/detail?name=jquery.color.utils-0.1.0.js"></script-->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+<script src="gup.js" type="text/javascript"></script>
+<script src="viewer.js" type="text/javascript"></script>
+<script src="controls.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<div id="videoContainer">
+	<!-- YouTube Player Container -->
+	<div id="vidCover"></div>
+	<div id="vidPlayer"></div>
+		<div id = "controls">
+			<a class="button" id="playVid" style="display: none;">
+				<span id ="but_swi" class="_play">Play</span>
+			</a>
+		</div>
+		<script src="youtube.js"></script>
+	</div>
+
+
+	<!-- Caption Playback Controls -->
+	<div id="controls">
+		<input type="button" class="button" id="play" value="Play"></input>
+		<input type="button" class="button disabled inactive" id="ff" value="Fast-Forward (1.5x)"></input>
+		<input type="button" class="button" id="live" value="Go To Live"></input>
+	</div>
+
+	<div id="playTime">0</div>
+	<!--div id="status">
+	</div-->
+
+
+</div>
+
+<div id="inputContainer">
+
+	<div id="textWrapper">
+		<div id="instructions">
+			What action should the playr have taken at this point?
+		</div>
+	</div>
+
+	<br/>
+	<br/>
+
+	<div id="respButtonContainer">
+		<input type="button" id="resp1" class="responseButton" value="<"></input>
+		<input type="button" id="resp2" class="responseButton" value="^"></input>
+		<input type="button" id="resp3" class="responseButton" value="v"></input>
+		<input type="button" id="resp4" class="responseButton" value=">"></input>
+	</div>
+
+</div>
+
+</body>
+</html>
