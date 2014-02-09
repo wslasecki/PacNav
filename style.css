@@ -4,7 +4,7 @@ body {
 #textWrapper {
   margin: 1%;
   /*background-color: white;*/
-  padding: 2%;
+  padding: 1%;
   border-color: lightcoral;
   line-height: 1.1;
   font-family: sans-serif;
@@ -204,10 +204,26 @@ body {
 
 #inputContainer {
   position: absolute;
+  text-align: center;
+  background: #FEE;
   top: 475px;
-  left: 15px;
-  width: 640px;
-  height: 250px;
+  left: 10px;
+  width: 655px;
+  height: 200px;
+  margin-bottom: 25px;
+}
+
+input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
+.responseButton {
+  font-size: 36px;
+  font-weight: bold;
+  height: 45px;
+  width: 50px;
 }
 
 #respButtonContainer {
@@ -225,7 +241,7 @@ body {
   height: 400px;
   overflow-x: scroll;
   left: 680px;
-  width: 300px;
+  width: 360px;
 }
 
 #suggestHeader {

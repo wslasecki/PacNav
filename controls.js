@@ -71,7 +71,7 @@ $(document).ready( function() {
             $('#play').attr('value', 'Pause');
             $('#stepf').hide();
             $('#stepb').hide();
-            $('#inputContainer').hide();
+            $('#inputContainer').hide(200);
 
             Control.startPlayback();
             Control.vidIsPlaying = true;
@@ -80,7 +80,7 @@ $(document).ready( function() {
             $('#play').attr('value', 'Play');
             $('#stepf').show();
             $('#stepb').show();
-            $('#inputContainer').show(500);
+            $('#inputContainer').show(400);
 
             Control.pausePlayback();
             Control.vidIsPlaying = false;
