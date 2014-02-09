@@ -67,8 +67,8 @@ $(document).ready( function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
 
-        if (buttonVal == 'Play') {
-            $('#play').attr('value', 'Pause');
+        if (buttonVal == 'Continue' || buttonVal == 'Play') {
+            $('#play').attr('value', 'Wait!');
             $('#stepf').hide();
             $('#stepb').hide();
             $('#inputContainer').hide(200);
@@ -76,8 +76,8 @@ $(document).ready( function() {
             Control.startPlayback();
             Control.vidIsPlaying = true;
         }
-        else if (buttonVal == 'Pause') {
-            $('#play').attr('value', 'Play');
+        else if (buttonVal == 'Wait!') {
+            $('#play').attr('value', 'Continue');
             $('#stepf').show();
             $('#stepb').show();
             $('#inputContainer').show(400);
