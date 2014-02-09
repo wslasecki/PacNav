@@ -9,6 +9,7 @@
 <script src="gup.js" type="text/javascript"></script>
 <script src="viewer.js" type="text/javascript"></script>
 <script src="controls.js" type="text/javascript"></script>
+<script src="suggestions.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -29,9 +30,9 @@
 
 	<!-- Caption Playback Controls -->
 	<div id="controls">
+		<input type="button" class="button stepButton" id="stepb" value="Step Backward (2s)"></input>
 		<input type="button" class="button" id="play" value="Play"></input>
-		<input type="button" class="button disabled inactive" id="ff" value="Fast-Forward (1.5x)"></input>
-		<input type="button" class="button" id="live" value="Go To Live"></input>
+		<input type="button" class="button stepButton" id="stepf" value="Step Forward (2s)"></input>
 	</div>
 
 	<div id="playTime">0</div>
@@ -45,7 +46,7 @@
 
 	<div id="textWrapper">
 		<div id="instructions">
-			What action should the playr have taken at this point?
+			What action should the player have taken at this point?
 		</div>
 	</div>
 
@@ -53,12 +54,21 @@
 	<br/>
 
 	<div id="respButtonContainer">
-		<input type="button" id="resp1" class="responseButton" value="<"></input>
-		<input type="button" id="resp2" class="responseButton" value="^"></input>
-		<input type="button" id="resp3" class="responseButton" value="v"></input>
-		<input type="button" id="resp4" class="responseButton" value=">"></input>
+		<input type="button" id="respLeft" class="responseButton" value="<"></input>
+		<input type="button" id="respUp" class="responseButton" value="^"></input>
+		<input type="button" id="respDown" class="responseButton" value="v"></input>
+		<input type="button" id="respRight" class="responseButton" value=">"></input>
 	</div>
 
+</div>
+
+<div id="suggestContainer">
+	<div id="suggestHeader">
+		Your Suggestions:
+	</div>
+
+	<div id="suggestContent">
+	</div>
 </div>
 
 </body>

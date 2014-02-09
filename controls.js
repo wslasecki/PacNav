@@ -21,7 +21,6 @@ var Control = {
 		}
 
 		Viewer.isPaused = false;
-		Viewer.isFF = false;
 	},
 
 	pausePlayback: function() {
@@ -29,22 +28,7 @@ var Control = {
 		if( !Viewer.isPaused ) {
 			Viewer.startCurPauseTime = Control.getTime();
 			Viewer.isPaused = true;
-			Viewer.isFF = false;
 		}
-	},
-	fastForwardPlayback: function() {
-		if( !Viewer.isFF ) {
-			Viewer.isFF = true;
-		}
-		else {
-			Viewer.isFF = false;
-		}
-	},
-	goLivePlayback: function() {
-		// Update all content to the 'real' wall-clock time
-		Viewer.pauseTime = 0;
-		Viewer.startCurPauseTime = 0;
-		Viewer.isPaused = false;
 	},
 
 	stopPlayback: function() {
@@ -73,174 +57,71 @@ var Control = {
 
 
 $(document).ready( function() {
-    Control.pauseMode = true;
-    Control.holdMode = true;
 
+    $('#stepf').hide();
+    $('#stepb').hide();
+    $('#inputContainer').hide();
 
     // Event routing
     $('#play').click(function() {
         var buttonVal = $('#play').attr('value');
-        console.log("Play clickd: " + buttonVal);
+        console.log("Play clicked: " + buttonVal);
 
         if (buttonVal == 'Play') {
-            $('#reset').attr('class', 'button');
-            $('#reset').removeAttr('disabled');
             $('#play').attr('value', 'Pause');
-	    $('.ui-widget-header').css('background', '#0E0');
+            $('#stepf').hide();
+            $('#stepb').hide();
+            $('#inputContainer').hide();
 
-	    // Enable / deactivate FF
-	    if( Viewer.pauseTime > 0 ) {
-                $('#ff').removeClass('disabled');
-                $('#ff').addClass('enabled');
-	    }
-	    else {
-                $('#ff').removeClass('enabled');
-                $('#ff').addClass('disabled');
-	    }
-            $('#ff').removeClass('active');
-            $('#ff').addClass('inactive');
             Control.startPlayback();
+            Control.vidIsPlaying = true;
         }
         else if (buttonVal == 'Pause') {
-            $('#reset').attr('class', 'button');
             $('#play').attr('value', 'Play');
-	    $('.ui-widget-header').css('background', '#E00');
+            $('#stepf').show();
+            $('#stepb').show();
+            $('#inputContainer').show(500);
 
-	    // Disable / deactivate FF
-            $('#ff').removeClass('enabled');
-            $('#ff').addClass('disabled');
-            $('#ff').removeClass('active');
-            $('#ff').addClass('inactive');
             Control.pausePlayback();
+            Control.vidIsPlaying = false;
         };
 
         $('#playVid').click();
-        Control.vidIsPlaying = true;
     });
-    $('#ff').click(function() {
-	if( $('#ff').hasClass('enabled') ) {
-        if ( !Viewer.isFF ) {
-	    // Activate / enable FF
-            $('#ff').removeClass('inactive');
-            $('#ff').addClass('active');
-            //$('#ff').removeClass('disabled');
-            //$('#ff').addClass('enabled');
-        }
-        else {
-	    // Deactivate / enable FF
-            $('#ff').removeClass('active');
-            $('#ff').addClass('inactive');
-            //$('#ff').removeClass('disabled');
-            //$('#ff').addClass('enabled');
-        }
-        Control.fastForwardPlayback();
-	}
-    });
-    $('#live').click(function() {
-        if (!Viewer.isPaused) {
-            $('#reset').attr('class', 'button');
-            $('#reset').removeAttr('disabled');
-            Control.goLivePlayback();
-        }
-        else {
-            $('#play').attr('value', 'Pause');
-            $('#reset').attr('class', 'button');
-	    $('.ui-widget-header').css('background', '#0E0');
-            Control.goLivePlayback();
-        }
 
-	// Disable / deactivate FF
-        $('#ff').removeClass('enabled');
-        $('#ff').addClass('disabled');
-        $('#ff').removeClass('active');
-        $('#ff').addClass('inactive');
+    // TODO: Move this to youtube.js
+    // Step Forward/Backward buttons:
+    $('#stepb').click(function() {
+	console.log("Seeking to (-2): " + (player.getCurrentTime()-2));
+        player.seekTo(player.getCurrentTime()-2);
+
+        // A hack. Ensure the video frame refreshes
+        //player.playVideo();
+        //player.pauseVideo();
     });
+    $('#stepf').click(function() {
+	console.log("Seeking to (+2): " + player.getCurrentTime()+2);
+        player.seekTo(player.getCurrentTime()+2);
+
+        // A hack. Ensure the video frame refreshes
+        //player.playVideo();
+        //player.pauseVideo();
+    });
+
+
+    // NOTE: This is depricated, right?
     $('#reset').click(function() {
         $('#reset').attr('class', 'disabled');
         $('#play').attr('value', 'Play');
         $('#reset').attr('disabled', true);
         Control.stopPlayback();
     });
+    ///
 
-    // When '.' is pressed...
-    $(document).keydown( function(e) {
-      if( Control.pauseMode ) {
-    	// When 'Down Arrow' is hit...
-        if( e.which == 40 ) {
-	    //$('.ui-widget-header').css('background', '#E00');
-            //Control.pausePlayback();
-	    //
-            if( $('#play').attr('value') == 'Pause' ) {
-        	$('#play').click();
-	    }
-        }
-    	// When 'Up Arrow' is hit...
-        if( e.which == 39 ) {
-            $('#ff').click();
-        }
-    	// When 'Right Arrow' is hit...
-        else if( e.which == 38 ) {
-            $('#live').click();
-        }
-        // When 'Left Arrow' is hit...
-        if( e.which == 37 ) {
-            $('#play').click();
-        }
-      }
-      if( Control.holdMode ) {
-        if( e.which == 188 ) {
-            // Start highlighting a word
-	    if( Control.holdingIdx < 0 && Viewer.nextIdx > 0 ) {
-		Control.holdingIdx = Viewer.nextIdx-1;
-		$('#word_' + Control.holdingIdx).css("background", "#FF0");
-	    }
-	    else {
-		$('#word_' + Control.holdingIdx).css("background", "#FFF");
-		Control.holdingIdx = -1;
-	    }
-        }
-        else if( e.which == 190 ) {
-            // Start highlighting a word
-	    if( Control.holdingIdx < 0 && Viewer.nextIdx > 0 ) {
-		Control.holdingIdx = Viewer.nextIdx-1;
-		$('#word_' + Control.holdingIdx).css("background", "#FF0");
-	    }
-	}
-        // When 'p' is hit...
-        else if( e.which == 80 ) {
-            $('#play').click();
-        }
-        //else { alert(e.which) }
-      }
-
-	return false;
-    });
-    $(document).keyup( function(e) {
-      if( Control.pauseMode ) {
-    	// When 'Down Arrow' is un-hit...
-        if( e.which == 40 ) {
-	    //$('.ui-widget-header').css('background', '#0E0');
-            //Control.startPlayback()
-            if( $('#play').attr('value') == 'Play' ) {
-            	$('#play').click();
-	    }
-	}
-      }
-      if( Control.holdMode ) {
-        if( e.which == 190 ) {
-            // Start highlighting a word
-	    if( Control.holdingIdx >= 0 ) {
-		$('#word_' + Control.holdingIdx).css("background", "#FFF");
-		Control.holdingIdx = -1;
-	    }
-	}
-      }
-
-	return false;
-    });
 
     $('#vidCover').click( function() {
         console.log("Cover clicked...");
+	$('#play').click();
     });
     
 });

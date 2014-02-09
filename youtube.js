@@ -12,7 +12,7 @@
       var endTime;
       var vidId;
 
-      //var vidId = 'M7lc1UVf-VE'; //youtube video ID
+      //var vidId = 'A4QcyW-qTUg'; //youtube video ID
 
       startTime = 0;
       endTime = 600;
@@ -139,75 +139,9 @@
         player.seekTo(ui.value);
       }
 
-      // function slidingSliderChange(ui){
-      //   player.seekTo(ui.value, false);
-      // }
 
     $(document).ready(function(){
     	
-      // $("#setStart").on('click', function(){
-      //   currentTimeLeft = (player.getCurrentTime() - startTime).toFixed(3);
-      //   currentTimeLeft = parseFloat(currentTimeLeft);
-      //   var val_bar = $( "#slider-range" + activeBarID ).slider( "option" , "values");
-
-      //   //$( "#slider-range" + activeBarID ).slider( "values", 0, currentTimeLeft );
-      //   $( "#amount" + activeBarID ).val( currentTimeLeft + "s - " + val_bar[ 1 ] +"s");
-      //   // alert(activeBarID);
-        
-      //   if( activeBarID != 0 )//if the bar is not the first bar
-      //   {
-      //     var prev_bar = $( "#slider-range" + (activeBarID - 1) ).slider( "option" , "values"); 
-
-      //     //if left pin is less than previous bar's right pin
-      //     if(currentTimeLeft <= prev_bar[1]){
-      //       alert("Error: the start pin cannot be before the end pin of a previous bar.")
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, parseFloat(val_bar[0]));
-      //     }
-
-      //     //if left pin within 1 second of the bar's end time
-      //     else if(currentTimeLeft >= (endTime - startTime - 1)){
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, (endTime - startTime - 1) );
-      //       $( "#slider-range" + activeBarID ).slider( "values", 1, (endTime - startTime) );
-      //     }
-
-      //     //if left pin is great than or within 1 second of the right pin
-      //     else if(currentTimeLeft > val_bar[1] || val_bar[1] - currentTimeLeft < 1){
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, (currentTimeLeft) );
-      //       $( "#slider-range" + activeBarID ).slider( "values", 1, (currentTimeLeft + 1) );
-      //     }
-      //     else{
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, currentTimeLeft );
-      //     }
-      //   }
-
-      //   else{ //if it is the first bar
-
-      //     //if left pin within 1 second of the bar's end time
-      //     if(currentTimeLeft >= (endTime - startTime - 1)){
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, (endTime - startTime - 1) );
-      //       $( "#slider-range" + activeBarID ).slider( "values", 1, (endTime - startTime) );
-      //     }
-
-      //     //if left pin is great than or within 1 second of the right pin
-      //     else if(currentTimeLeft > val_bar[1] || val_bar[1] - currentTimeLeft < 1){
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, (currentTimeLeft) );
-      //       $( "#slider-range" + activeBarID ).slider( "values", 1, (currentTimeLeft + 1) );
-      //     }
-      //     else{
-      //       $( "#slider-range" + activeBarID ).slider( "values", 0, currentTimeLeft );
-      //     }
-      //   }
-
-      //     var final_bar = $( "#slider-range" + activeBarID ).slider( "option" , "values");
-      //     var leftFinal = final_bar[0];
-      //     var rightFinal = final_bar[1];
-      //     val[(2*activeBarID)] = (leftFinal + startTime);
-      //     val[(2*activeBarID) + 1] = (rightFinal + startTime );
-        
-      //   $( "#amount" + activeBarID ).val((parseFloat(leftFinal)) + "s - " + (parseFloat(rightFinal)) +"s");
-
-      // });
-
       $('#setEnd').click( function(){
         currentTimeRight = (player.getCurrentTime() - startTime).toFixed(3);
         currentTimeRight_float = parseFloat(currentTimeRight);//changes curr right to float
