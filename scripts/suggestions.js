@@ -39,6 +39,8 @@ Suggestions = {
 
 			// Add this to the suggestions set
 			Suggestions.addSugg(buttonID, player.getCurrentTime());
+
+			$('#legion-submit').removeAttr('DISABLED');
 		});
 	}
 }

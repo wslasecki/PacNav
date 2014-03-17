@@ -1,4 +1,4 @@
-var Control = {
+var Controls = {
 	getTime: function() {
 		var sDate = new Date();
 		//return sDate.getTime();
@@ -9,7 +9,7 @@ var Control = {
 		//alert("Starting...");
 
 		if( !Viewer.isPaused ) {
-       	         	Viewer.startTime = Control.getTime();
+       	         	Viewer.startTime = Controls.getTime();
 
 			// Run the first time
 			Viewer.load();
@@ -17,7 +17,7 @@ var Control = {
 			Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
 		}
 		else {
-			Viewer.pauseTime += Control.getTime() - Viewer.startCurPauseTime;
+			Viewer.pauseTime += Controls.getTime() - Viewer.startCurPauseTime;
 		}
 
 		Viewer.isPaused = false;
@@ -26,7 +26,7 @@ var Control = {
 	pausePlayback: function() {
 		//
 		if( !Viewer.isPaused ) {
-			Viewer.startCurPauseTime = Control.getTime();
+			Viewer.startCurPauseTime = Controls.getTime();
 			Viewer.isPaused = true;
 		}
 	},
@@ -57,6 +57,11 @@ var Control = {
 
 
 $(document).ready( function() {
+    if( gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE" ) {
+        $('#play').attr('disabled', 'disabled');
+        $('#play').val("Accept the HIT to continue");
+        $('#play').css('width', '230px');
+    }
 
     $('#stepf').hide();
     $('#stepb').hide();
@@ -73,8 +78,8 @@ $(document).ready( function() {
             $('#stepb').hide();
             $('#inputContainer').hide(200);
 
-            Control.startPlayback();
-            Control.vidIsPlaying = true;
+            Controls.startPlayback();
+            Controls.vidIsPlaying = true;
         }
         else if (buttonVal == 'Wait!') {
             $('#play').attr('value', 'Continue');
@@ -82,8 +87,8 @@ $(document).ready( function() {
             $('#stepb').show();
             $('#inputContainer').show(400);
 
-            Control.pausePlayback();
-            Control.vidIsPlaying = false;
+            Controls.pausePlayback();
+            Controls.vidIsPlaying = false;
         };
 
         $('#playVid').click();
@@ -114,15 +119,20 @@ $(document).ready( function() {
         $('#reset').attr('class', 'disabled');
         $('#play').attr('value', 'Play');
         $('#reset').attr('disabled', true);
-        Control.stopPlayback();
+        Controls.stopPlayback();
     });
     ///
 
 
-    $('#vidCover').click( function() {
-        console.log("Cover clicked...");
-	$('#play').click();
-    });
+    if( gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE" ) {
+        $('#vidCover').html("<div style='font-size: 36px; font-weight: bold; color: #B11; text-align: center'><br><br>Please accept the HIT to continue!</div>");
+    }
+    else {
+        $('#vidCover').click( function() {
+            console.log("Cover clicked...");
+            $('#play').click();
+        });
+    }
     
 });
 

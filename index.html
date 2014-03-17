@@ -1,10 +1,17 @@
 <html><head>
 <title>Audio Transcript</title>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script><style type="text/css"></style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script><style type="text/css"></style>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 <!--script type="text/javascript" src="http://code.google.com/p/jquery-color-utils/downloads/detail?name=jquery.color.utils-0.1.0.js"></script-->
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+
+<link rel="stylesheet" href="//roc.cs.rochester.edu/LegionJS/LegionTools/LegionJS_Libraries/legion.css" />
+<script src="scripts/vars.js"></script>
+<script src="//roc.cs.rochester.edu/LegionJS/LegionTools/LegionJS_Libraries/legion.js"></script>
+
+
 
 <script src="scripts/gup.js" type="text/javascript"></script>
 <script src="scripts/viewer.js" type="text/javascript"></script>
@@ -45,7 +52,7 @@
 <div id="inputContainer">
 
 	<div id="textWrapper">
-		<div id="instructions">
+		<div id="task-instructions">
 			What action should the player have taken at this point?
 		</div>
 	</div>
@@ -69,6 +76,17 @@
 	<div id="suggestContent">
 	</div>
 </div>
+
+        <div id="submit-div">
+                <form id="submit-form">
+                        <input type="hidden" name="money" id="money_field">
+                        <input type="hidden" name="assignmentId" id="submit-assignmentId">
+                </form>
+        </div>
+
+<div id="sidebar"></div>
+<div id="instructions"></div>
+<p id='legion-money' style="display:none;">.15</p>
 
 </body>
 </html>
