@@ -65,6 +65,8 @@ $(document).ready( function() {
 
     $('#stepf').hide();
     $('#stepb').hide();
+    $('#jumpf').hide();
+    $('#jumpb').hide();
     $('#inputContainer').hide();
 
     // Event routing
@@ -72,10 +74,12 @@ $(document).ready( function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
 
-        if (buttonVal == 'Continue' || buttonVal == 'Play') {
+        if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
             $('#play').attr('value', 'Wait!');
             $('#stepf').hide();
             $('#stepb').hide();
+            $('#jumpf').hide();
+            $('#jumpb').hide();
             $('#inputContainer').hide(200);
 
             Controls.startPlayback();
@@ -85,6 +89,8 @@ $(document).ready( function() {
             $('#play').attr('value', 'Continue');
             $('#stepf').show();
             $('#stepb').show();
+            $('#jumpf').show();
+            $('#jumpb').show();
             $('#inputContainer').show(400);
 
             Controls.pausePlayback();
@@ -97,20 +103,27 @@ $(document).ready( function() {
     // TODO: Move this to youtube.js
     // Step Forward/Backward buttons:
     $('#stepb').click(function() {
-	console.log("Seeking to (-2): " + (player.getCurrentTime()-2));
-        player.seekTo(player.getCurrentTime()-2);
-
+	console.log("Seeking to (-.01): " + (player.getCurrentTime()-.01));
+        player.seekTo(player.getCurrentTime()-.03);
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
     });
     $('#stepf').click(function() {
-	console.log("Seeking to (+2): " + player.getCurrentTime()+2);
-        player.seekTo(player.getCurrentTime()+2);
-
+	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
+        player.seekTo(player.getCurrentTime()+.03);
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
+    });
+    // Jump Forward/Backward buttons:
+    $('#jumpb').click(function() {
+    console.log("Seeking to (-1): " + (player.getCurrentTime()-1));
+        player.seekTo(player.getCurrentTime()-.5);
+    });
+    $('#jumpf').click(function() {
+    console.log("Seeking to (+1): " + player.getCurrentTime()+1);
+        player.seekTo(player.getCurrentTime()+.5);
     });
 
 

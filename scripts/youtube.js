@@ -100,6 +100,18 @@
 
         }
         else if(event.data == YT.PlayerState.ENDED){
+          var buttonVal = $('#play').attr('value');
+          if (buttonVal == 'Wait!') {
+              $('#play').attr('value', 'Replay');
+          }
+          else if (buttonVal == 'Continue') {
+              $('#play').attr('value', 'Replay');
+              $('#stepf').hide();
+              $('#stepb').hide();
+              $('#jumpf').hide();
+              $('#jumpb').hide();
+              $('#inputContainer').hide(200);
+          }
           $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
         }
       }
@@ -121,7 +133,7 @@
           $( "#timeSlider" ).slider( "option", "value", player.getCurrentTime());
         }, 100);
         timeTextVar = setInterval(function(){
-          $("#playTime").html((Math.round(10 * (player.getCurrentTime() - startTime)) / 10).toFixed(1) + "/" + (endTime - startTime));
+          $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime));
         }, 100);
       }
 
@@ -130,7 +142,7 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
-          $("#playTime").html((Math.round(10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(1) + "/" + (endTime - startTime));
+          $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime));
         }, 100);
       }
 

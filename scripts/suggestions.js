@@ -13,7 +13,8 @@ Suggestions = {
 		//
 		timeSplit = player.getCurrentTime().toString().split(".");
 		timeSec = timeSplit[0];
-		timeFrac = timeSplit[1].substring(0,1);  // Trim this to 1 number to avoid over-fitting the time
+        // GABE made changes from substring(0,1)
+		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time
 		newID = "suggestion_" + timeSec + "-" + timeFrac;  // Use the current time to destinguish entries. Replace decimal because JQuery doesn't like them
 
 		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan sholud have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
