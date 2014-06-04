@@ -1,5 +1,5 @@
 <html><head>
-<title>Audio Transcript</title>
+<title>Pacman Online Learning</title>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script><style type="text/css"></style>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
@@ -18,10 +18,15 @@
 <script src="scripts/controls.js" type="text/javascript"></script>
 <script src="scripts/suggestions.js" type="text/javascript"></script>
 
+<script type="text/javascript" src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js"></script>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 
 </head>
-
+<body>
+<div id="instructionContainer">
+IMPORTANT: Please read the <a href="instructions.html" target="_blank">instructions</a> carefully before attempting.
+</div>
 <div id="videoContainer">
 	<!-- YouTube Player Container -->
 	<div id="vidCover"></div>
@@ -37,11 +42,11 @@
 
 	<!-- Caption Playback Controls -->
 	<div id="controls">
-        <input type="button" class="button stepButton" id="jumpb" value="<< Jump"></input>
+                <input type="button" class="button stepButton" id="jumpb" value="<< Jump"></input>
 		<input type="button" class="button stepButton" id="stepb" value="< Step"></input>
 		<input type="button" class="button" id="play" value="Play"></input>
 		<input type="button" class="button stepButton" id="stepf" value="Step >"></input>
-        <input type="button" class="button stepButton" id="jumpf" value="Jump >>"></input>
+                <input type="button" class="button stepButton" id="jumpf" value="Jump >>"></input>
 	</div>
 
 	<div id="playTime">0</div>
@@ -59,8 +64,6 @@
 		</div>
 	</div>
 
-	<br/>
-
 	<div id="respButtonContainer">
 		<input type="button" id="respLeft" class="responseButton" value="&larr;"></input>
 		<input type="button" id="respUp" class="responseButton" value="&uarr;"></input>
@@ -71,6 +74,7 @@
 </div>
 
 <div id="suggestContainer">
+
 	<div id="suggestHeader">
 		Your Suggestions:
 	</div>
@@ -79,12 +83,23 @@
 	</div>
 </div>
 
-        <div id="submit-div">
-                <form id="submit-form">
-                        <input type="hidden" name="money" id="money_field">
-                        <input type="hidden" name="assignmentId" id="submit-assignmentId">
-                </form>
-        </div>
+<div id="submitContainer">
+	<form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit">
+	<!-- form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit" -->
+		<input type="hidden" name="assignmentId" value="" id="assignmentId" />
+        <input type="hidden" name="Video" value="" id="videoId" />
+        <input type="hidden" name="Suggestion" value="" id="suggestId" />
+		<input type="submit" class="button" id="submitButton" value="Submit HIT" />
+	</form>
+	<script language="Javascript">turkSetAssignmentID();</script>
+</div>
+
+<!-- div id="submit-div">
+        <form id="submit-form">
+                <input type="hidden" name="money" id="money_field"></div>
+                <input type="hidden" name="assignmentId" id="submit-assignmentId">
+        </form>
+</div -->
 
 <div id="sidebar"></div>
 <div id="instructions"></div>

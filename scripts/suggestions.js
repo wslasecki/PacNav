@@ -1,3 +1,13 @@
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0; i<vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+    }
+    return(false);
+}
+
 Suggestions = {
 	buttonMap: new Array(),
 	numSugg: 0,
@@ -17,7 +27,7 @@ Suggestions = {
 		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time
 		newID = "suggestion_" + timeSec + "-" + timeFrac;  // Use the current time to destinguish entries. Replace decimal because JQuery doesn't like them
 
-		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan sholud have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
+		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan should have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
 
 		if( $('#'+newID).length != 0 ) {
 			// If the suggestion already exists, replace it
@@ -28,6 +38,10 @@ Suggestions = {
 			console.log("Appending new suggestion...");
 			$('#suggestContent').append(newEntry);
 		}
+       
+        var suggestVal = document.getElementById('suggestContent').textContent;
+        document.getElementById('suggestId').value = suggestVal.trim();
+        document.getElementById('videoId').value = getQueryVariable('video');
 	},
 
 	init: function() {
