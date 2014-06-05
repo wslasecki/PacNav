@@ -19,13 +19,19 @@
 <script src="scripts/suggestions.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js"></script>
+<script type="text/javascript" src="scripts/csspopup.js"></script>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 
 </head>
 <body>
+<div id="blanket" style="display:none;"></div>
+<div id="popUpDiv" style="display:none;">
+    <a href="#" onclick="popup('popUpDiv')" style="text-decoration:none">[X] Close</a><br />
+    <iframe src="instructions.html" width="100%" height="95%" frameborder="0"></iframe>
+</div>
 <div id="instructionContainer">
-IMPORTANT: Please read the <a href="instructions.html" target="_blank">instructions</a> carefully before attempting.
+<b>IMPORTANT:</b> Please read the <a href="#" onclick="popup('popUpDiv')">instructions</a> carefully before attempting.
 </div>
 <div id="videoContainer">
 	<!-- YouTube Player Container -->
@@ -42,11 +48,11 @@ IMPORTANT: Please read the <a href="instructions.html" target="_blank">instructi
 
 	<!-- Caption Playback Controls -->
 	<div id="controls">
-                <input type="button" class="button stepButton" id="jumpb" value="<< Jump"></input>
+        <input type="button" class="button stepButton" id="jumpb" value="<< Jump"></input>
 		<input type="button" class="button stepButton" id="stepb" value="< Step"></input>
 		<input type="button" class="button" id="play" value="Play"></input>
 		<input type="button" class="button stepButton" id="stepf" value="Step >"></input>
-                <input type="button" class="button stepButton" id="jumpf" value="Jump >>"></input>
+        <input type="button" class="button stepButton" id="jumpf" value="Jump >>"></input>
 	</div>
 
 	<div id="playTime">0</div>

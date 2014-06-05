@@ -40,7 +40,8 @@ body {
   height: 20px;
   position: absolute;
   top: 5px;
-  color: #b1b1b0;
+  color: #ffcc00;
+  font-size: 20px;
 }
 
 .word {
@@ -280,4 +281,24 @@ appearance: none;
 .suggestEntry {
 	margin: 5px;
 	font-family: verdana;
+}
+
+/* pop up css */
+#blanket {
+   background-color:#111;
+   opacity: 0.65;
+   position:absolute;
+   z-index: 9001; /*ooveeerrrr nine thoussaaaannnd*/
+   top:0px;
+   left:0px;
+   width:100%;
+}
+#popUpDiv {
+    position:absolute;
+    background-color:#ababac;
+    border: solid 5px white;
+    padding: 5px 5px 5px 5px;
+    width:640px;
+    height:480px;
+    z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/
 }
