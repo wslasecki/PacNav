@@ -38,8 +38,12 @@ Suggestions = {
 			console.log("Appending new suggestion...");
 			$('#suggestContent').append(newEntry);
 		}
-       
+
         var suggestVal = document.getElementById('suggestContent').textContent;
+        if(suggestVal.length >= 0)
+        {
+            document.getElementById('submitButton').disabled = false;
+        }
         document.getElementById('suggestId').value = suggestVal.trim();
         document.getElementById('videoId').value = getQueryVariable('video');
 	},

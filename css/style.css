@@ -97,9 +97,9 @@ body {
     position:relative;
     top:1px;
 }.button:disabled {
-    color: #666;
+    color: #b8b8b8;
     position:relative;
-    top:10px;
+    top:0px;
 }
 
 .disabled {
@@ -298,7 +298,7 @@ appearance: none;
     background-color:#ababac;
     border: solid 5px white;
     padding: 5px 5px 5px 5px;
-    width:640px;
-    height:480px;
+    width:800px;
+    height:520px;
     z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/
 }

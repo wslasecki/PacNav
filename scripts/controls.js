@@ -68,6 +68,7 @@ $(document).ready( function() {
     $('#jumpf').hide();
     $('#jumpb').hide();
     $('#inputContainer').hide();
+    document.getElementById('submitButton').disabled = true;
 
     // Event routing
     $('#play').click(function() {
