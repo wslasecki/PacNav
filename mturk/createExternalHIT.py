@@ -4,17 +4,18 @@ from boto.mturk.question import ExternalQuestion
 
 ######  CONFIGURATION PARAMETRS  ######
 
-VIDEO_URL = "A4QcyW-qTUg"
+VIDEO_URL = "5ybc6Z15Q2Q"
 
-SANDBOX = True  # Select whether to post to the sandbox (using fake money), or live MTurk site (using REAL money)
-HIT_URL = "https://roc.cs.rochester.edu/walter/PacNav/?video=" + VIDEO_URL;  # Provide the URL that you want workers to sent sent to complete you task
+SANDBOX = False  # Select whether to post to the sandbox (using fake money), or live MTurk site (using REAL money)
+#HIT_URL = "https://roc.cs.rochester.edu/walter/PacNav/?video=" + VIDEO_URL;  # Provide the URL that you want workers to sent sent to complete you task
+HIT_URL = "https://eecs.wsu.edu/~gdelacru/PacNav/?video=" + VIDEO_URL;
 
-NUMBER_OF_HITS = 5  # Number of different HITs posted for this task
-NUMBER_OF_ASSIGNMENTS = 5  # Number of tasks that DIFFERENT workers will be able to take for each HIT
-LIFETIME = 60 * 60 * 24  # How long that the task will stay visible if not taken by a worker (in seconds)
-REWARD = 0.20  # Base payment value for completing the task (in dollars)
-DURATION = 60*5  # How long the worker will be able to work on a single task (in seconds)
-APPROVAL_DELAY = 60*60*2  # How long after the task is completed will the worker be automatically paid if not manually approved (in seconds)
+NUMBER_OF_HITS = 1  # Number of different HITs posted for this task
+NUMBER_OF_ASSIGNMENTS = 10  # Number of tasks that DIFFERENT workers will be able to take for each HIT
+LIFETIME = 60 * 60 * 168  # How long that the task will stay visible if not taken by a worker (in seconds)
+REWARD = 0.10  # Base payment value for completing the task (in dollars)
+DURATION = 60*10  # How long the worker will be able to work on a single task (in seconds)
+APPROVAL_DELAY = 60*60*168  # How long after the task is completed will the worker be automatically paid if not manually approved (in seconds)
 
 
 # HIT title (as it will appear on the public listing)
@@ -26,9 +27,9 @@ KEYWORDS = ['video', 'games', 'pacman', 'advice']
 
 
 # Your Amazon Web Services Access Key (private)
-AWS_ACCESS_KEY = 
+AWS_ACCESS_KEY = 'AKIAITZGO3AKYBUQL7RQ' # <-- TODO: Enter your access key here
 # Your Amazon Web Services Secret Key (private)
-AWS_SECRET_KEY = 
+AWS_SECRET_KEY = 'mTSLWsqJrK7mNOIu1799WyBq+xW0Y+fcQzDHgmtw' # <-- TODO: Enter your private key here
 
 #######################################
 
