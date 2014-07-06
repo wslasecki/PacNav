@@ -8,9 +8,9 @@ import sys
 SANDBOX = True  # Select whether to post to the sandbox (using fake money), or live MTurk site (using REAL money)
 
 # Your Amazon Web Services Access Key (private)
-AWS_ACCESS_KEY = 'KIAJQXSX3UIVANNDDAQ'
+AWS_ACCESS_KEY = '' # <-- TODO: Enter your access key here
 # Your Amazon Web Services Secret Key (private)
-AWS_SECRET_KEY = 'iLVxo1AgVuDeDWQCOKJ7+g30rCpB0RiVOYCQwGjiD'
+AWS_SECRET_KEY = '' # <-- TODO: Enter your private key here
 
 #######################################
 
