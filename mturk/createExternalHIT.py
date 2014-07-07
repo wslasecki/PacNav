@@ -27,9 +27,9 @@ KEYWORDS = ['video', 'games', 'pacman', 'advice']
 
 
 # Your Amazon Web Services Access Key (private)
-AWS_ACCESS_KEY = 'AKIAITZGO3AKYBUQL7RQ' # <-- TODO: Enter your access key here
+AWS_ACCESS_KEY = '' # <-- TODO: Enter your access key here
 # Your Amazon Web Services Secret Key (private)
-AWS_SECRET_KEY = 'mTSLWsqJrK7mNOIu1799WyBq+xW0Y+fcQzDHgmtw' # <-- TODO: Enter your private key here
+AWS_SECRET_KEY = '' # <-- TODO: Enter your private key here
 
 #######################################
 
