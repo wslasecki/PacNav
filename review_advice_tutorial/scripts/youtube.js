@@ -20,7 +20,8 @@
 	alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
       }
       else {
-	vidId = gup('video');
+	//vidId = gup('video');
+	vidId = 'CU8Xe_Yh9Lc';
       }
 
       //alert("SUCCESS (yt.js) --> " + startTime + " | " + endTime + " | " + vidId)
@@ -84,6 +85,7 @@
 
       function onPlayerStateChange(event){
         if(event.data == YT.PlayerState.PLAYING){
+        	console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
 			$("#but_swi").html("Pause");
          
@@ -94,38 +96,28 @@
           }
         }
         else if(event.data == YT.PlayerState.PAUSED){
+        		console.log("play paused");
             	$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
 
 
         }
         else if(event.data == YT.PlayerState.ENDED){
+          console.log("play end");
           var buttonVal = $('#play').attr('value');
-         //  if (buttonVal == 'Wait!') {
-//               $('#play').attr('value', 'Replay');
-//           }
-//           else if (buttonVal == 'Continue') {
-//               $('#play').attr('value', 'Replay');
-//               $('#stepf').hide();
-//               $('#stepb').hide();
-//               $('#jumpf').hide();
-//               $('#jumpb').hide();
-//               $('#inputContainer').hide(200);
-//           }
-			
-		   // ADDED BY BEI
-		   if(buttonVal == 'Wait!'){
-		   	  $('#play').hide();
-		   }
-		   else if (buttonVal == 'Continue') {
-		      $('#play').hide();
+          if (buttonVal == 'Wait!') {
+          	  console.log("play end and wait button change to replay");
+              $('#play').attr('value', 'Replay');
+          }
+          else if (buttonVal == 'Continue') {
+          	  console.log("play end and continue button change to replay");
+              $('#play').attr('value', 'Replay');
               $('#stepf').hide();
               $('#stepb').hide();
               $('#jumpf').hide();
               $('#jumpb').hide();
               $('#inputContainer').hide(200);
           }
-
           $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
         }
       }

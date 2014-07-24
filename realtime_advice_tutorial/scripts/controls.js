@@ -1,4 +1,6 @@
-var isFirstTime = true;
+var playNum = 0;
+var signal;					// ADD BY BEI
+//var isTutorial = true;		// ADD BY BEI
 
 var Controls = {
 	getTime: function() {
@@ -16,7 +18,9 @@ var Controls = {
 			// Run the first time
 			Viewer.load();
 			// Setup a callback for future runs
-			//Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
+			// if(playNum < 2){
+// 			Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
+// 			}
 		}
 		else {
 			Viewer.pauseTime += Controls.getTime() - Viewer.startCurPauseTime;
@@ -76,9 +80,23 @@ $(document).ready( function() {
     $('#play').click(function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
-
+		  // ADD BY BEI
+		  if (buttonVal == 'Play'){
+		  	playNum++;
+		  }
+		  
         //if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
           if (buttonVal == 'Continue' || buttonVal == 'Play') {
+            console.log("new PlayNum: "+ playNum);
+          	if(playNum > 2){
+          		$('#play').hide();
+            	$('#stepf').hide();
+            	$('#stepb').hide();
+            	$('#jumpf').hide();
+            	$('#jumpb').hide();
+            	$('#inputContainer').hide(200);
+          	}else{
+          		console.log("play button change to wait");
             $('#play').attr('value', 'Wait!');
             $('#stepf').hide();
             $('#stepb').hide();
@@ -88,23 +106,37 @@ $(document).ready( function() {
 
             Controls.startPlayback();
             Controls.vidIsPlaying = true;
+            
+            signal = "PLAY";	// ADD BY BEI
+          	}
+            
         }
         else if (buttonVal == 'Wait!') {
+        	if(playNum > 2){
+        		$('#play').hide();
+        	}else{
+        		console.log("play button change to continue");
             $('#play').attr('value', 'Continue');
             $('#stepf').show();
             $('#stepb').show();
             $('#jumpf').show();
             $('#jumpb').show();
             $('#inputContainer').show(400);
-
             Controls.pausePlayback();
             Controls.vidIsPlaying = false;
+            
+            signal = "WAIT";
+        	}
+            
+
+           
         };
 
         $('#playVid').click();
         
         // ADDED BY BEI
-        isFirstTime = false;
+        //isTutorial = false;
+        console.log("playNum: " + playNum);
     });
 
     // TODO: Move this to youtube.js
@@ -149,11 +181,10 @@ $(document).ready( function() {
     }
     else {
         $('#vidCover').click( function() {
-        	if(isFirstTime){
+        	if(playNum < 2){
 				console.log("Cover clicked...");
 				$('#play').click();
-				isFirstTime = false;	// ADDED BY BEI
-            }
+			}
         });
     }
     

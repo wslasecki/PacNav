@@ -12,12 +12,13 @@ Suggestions = {
 	buttonMap: new Array(),
 	numSugg: 0,
 
-	defineButtons: function() {
-		Suggestions.buttonMap["respLeft"] = "left";
-		Suggestions.buttonMap["respUp"] = "up";
-		Suggestions.buttonMap["respDown"] = "down";
-		Suggestions.buttonMap["respRight"] = "right";
-	},
+	//DELETED BY BEI
+	// defineButtons: function() {
+// 		Suggestions.buttonMap["respLeft"] = "left";
+// 		Suggestions.buttonMap["respUp"] = "up";
+// 		Suggestions.buttonMap["respDown"] = "down";
+// 		Suggestions.buttonMap["respRight"] = "right";
+// 	},
 
 	addSugg: function(toAddID) {
 		//
@@ -27,7 +28,9 @@ Suggestions = {
 		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time
 		newID = "suggestion_" + timeSec + "-" + timeFrac;  // Use the current time to destinguish entries. Replace decimal because JQuery doesn't like them
 
-		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan should have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
+		//newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan should have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
+		// ADDED BY BEI
+		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan has made a mistake <b>" + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
 
 		if( $('#'+newID).length != 0 ) {
 			// If the suggestion already exists, replace it
@@ -36,6 +39,7 @@ Suggestions = {
 		}
 		else {
 			console.log("Appending new suggestion...");
+			$('.suggestEntry').empty();		// ADD BY BEI, MAKE THE USER CAN ONLY GIVE ONE SUGGESTION
 			$('#suggestContent').append(newEntry);
 		}
 
@@ -49,7 +53,7 @@ Suggestions = {
 	},
 
 	init: function() {
-		Suggestions.defineButtons();
+		//Suggestions.defineButtons();
 
 
 		$('.responseButton').click( function() {

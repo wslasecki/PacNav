@@ -1,3 +1,6 @@
+var timeSec;
+var timeFrac;
+
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -12,7 +15,7 @@ Suggestions = {
 	buttonMap: new Array(),
 	numSugg: 0,
 
-	// DELETED BY BEI
+	//DELETED BY BEI
 	// defineButtons: function() {
 // 		Suggestions.buttonMap["respLeft"] = "left";
 // 		Suggestions.buttonMap["respUp"] = "up";
@@ -29,9 +32,9 @@ Suggestions = {
 		newID = "suggestion_" + timeSec + "-" + timeFrac;  // Use the current time to destinguish entries. Replace decimal because JQuery doesn't like them
 
 		//newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan should have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
-		//ADDED BY BEI
+		// ADDED BY BEI
 		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan has made a mistake <b>" + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
-		
+
 		if( $('#'+newID).length != 0 ) {
 			// If the suggestion already exists, replace it
 			console.log("Suggestion already exists for this timestamp. Replacing...");
@@ -53,7 +56,6 @@ Suggestions = {
 	},
 
 	init: function() {
-		// DELETED BY BEI
 		//Suggestions.defineButtons();
 
 
@@ -65,6 +67,9 @@ Suggestions = {
 			Suggestions.addSugg(buttonID, player.getCurrentTime());
 
 			$('#legion-submit').removeAttr('DISABLED');
+			
+			signal = "MISTAKE";		// ADD BY BEI
+
 		});
 	}
 }

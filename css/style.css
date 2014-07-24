@@ -236,10 +236,10 @@ appearance: none;
 }
 
 .responseButton {
-  font-size: 36px;
+  font-size: 22px;
   font-weight: bold;
   height: 45px;
-  width: 50px;
+  width: 128px;
 }
 
 #respButtonContainer {
