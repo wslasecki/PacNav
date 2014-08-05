@@ -1,4 +1,4 @@
-var isFirstTime = true;
+var signal; 	// ADD BY BEI
 
 var Controls = {
 	getTime: function() {
@@ -16,7 +16,7 @@ var Controls = {
 			// Run the first time
 			Viewer.load();
 			// Setup a callback for future runs
-			//Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
+			Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
 		}
 		else {
 			Viewer.pauseTime += Controls.getTime() - Viewer.startCurPauseTime;
@@ -77,8 +77,7 @@ $(document).ready( function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
 
-        //if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
-          if (buttonVal == 'Continue' || buttonVal == 'Play') {
+        if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
             $('#play').attr('value', 'Wait!');
             $('#stepf').hide();
             $('#stepb').hide();
@@ -88,6 +87,8 @@ $(document).ready( function() {
 
             Controls.startPlayback();
             Controls.vidIsPlaying = true;
+            
+             signal = "PLAY";	// ADD BY BEI
         }
         else if (buttonVal == 'Wait!') {
             $('#play').attr('value', 'Continue');
@@ -99,12 +100,11 @@ $(document).ready( function() {
 
             Controls.pausePlayback();
             Controls.vidIsPlaying = false;
+            
+            signal = "WAIT";
         };
 
         $('#playVid').click();
-        
-        // ADDED BY BEI
-        isFirstTime = false;
     });
 
     // TODO: Move this to youtube.js
@@ -149,11 +149,8 @@ $(document).ready( function() {
     }
     else {
         $('#vidCover').click( function() {
-        	if(isFirstTime){
-				console.log("Cover clicked...");
-				$('#play').click();
-				isFirstTime = false;	// ADDED BY BEI
-            }
+            console.log("Cover clicked...");
+            $('#play').click();
         });
     }
     

@@ -17,10 +17,17 @@
       startTime = 0;
       endTime = 600;
       if( gup('video') == '' ) {
-	alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
+		alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
       }
       else {
-	vidId = gup('video');
+        // if(isTutorial){
+//         	console.log("youtube.js isTutorial");
+//         	vidId = 'LTYBk22fRCc';
+//         }else{
+//         	console.log("youtube.js is not tutorial");
+//         	vidId = gup('video');
+//         }
+			vidId = 'LTYBk22fRCc';
       }
 
       //alert("SUCCESS (yt.js) --> " + startTime + " | " + endTime + " | " + vidId)
@@ -112,21 +119,42 @@
 //               $('#jumpb').hide();
 //               $('#inputContainer').hide(200);
 //           }
+		 
+		   console.log("hi bei playNum: " + playNum);
 			
 		   // ADDED BY BEI
-		   if(buttonVal == 'Wait!'){
+		   if(playNum > 1){
+		   	if(buttonVal == 'Wait!'){
+		   	  console.log("hide play");
 		   	  $('#play').hide();
-		   }
-		   else if (buttonVal == 'Continue') {
+		   	}
+		   	else if (buttonVal == 'Continue') {
 		      $('#play').hide();
               $('#stepf').hide();
               $('#stepb').hide();
               $('#jumpf').hide();
               $('#jumpb').hide();
               $('#inputContainer').hide(200);
+          	}
+          	
+          	 $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
+          	 
+          }else{
+          	if (buttonVal == 'Wait!') {
+          	  console.log("show play");
+              $('#play').attr('value', 'Play');
+          	}
+          	else if (buttonVal == 'Continue') {
+              $('#play').attr('value', 'Play');
+              $('#stepf').hide();
+              $('#stepb').hide();
+              $('#jumpf').hide();
+              $('#jumpb').hide();
+              $('#inputContainer').hide(200);
+          	}
           }
 
-          $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
+         
         }
       }
 

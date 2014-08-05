@@ -65,6 +65,8 @@ Suggestions = {
 			Suggestions.addSugg(buttonID, player.getCurrentTime());
 
 			$('#legion-submit').removeAttr('DISABLED');
+			
+			signal = "MISTAKE";
 		});
 	}
 }
