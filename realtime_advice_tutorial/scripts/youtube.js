@@ -20,14 +20,15 @@
 		alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
       }
       else {
-        // if(isTutorial){
-//         	console.log("youtube.js isTutorial");
-//         	vidId = 'LTYBk22fRCc';
-//         }else{
-//         	console.log("youtube.js is not tutorial");
-//         	vidId = gup('video');
-//         }
-			vidId = 'LTYBk22fRCc';
+		//vidId = gup('video');
+		if(sessionStorage.getItem("task")){
+			vidId = gup('video');
+			console.log("TASK TRUE");
+		}else{
+			vidId = 'CU8Xe_Yh9Lc';
+			console.log("TUTORIAL TRUE");
+		}
+		
       }
 
       //alert("SUCCESS (yt.js) --> " + startTime + " | " + endTime + " | " + vidId)
@@ -81,16 +82,18 @@
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         //event.target.playVideo();
-	player.setOption('cc', 'fontSize', -1);
-	//player.getOption('cc', 'track')['languageCode'] = "";
-	//alert(player.getOptions('cc'));
-	//player.setOption('cc', 'track', '');
-	player.mute();
+        player.setPlaybackRate(0.25);
+		player.setOption('cc', 'fontSize', -1);
+		//player.getOption('cc', 'track')['languageCode'] = "";
+		//alert(player.getOptions('cc'));
+		//player.setOption('cc', 'track', '');
+		player.mute();
         startTimeSlider();
       }
 
       function onPlayerStateChange(event){
         if(event.data == YT.PlayerState.PLAYING){
+        	console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
 			$("#but_swi").html("Pause");
          
@@ -101,60 +104,47 @@
           }
         }
         else if(event.data == YT.PlayerState.PAUSED){
+        		console.log("play paused");
             	$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
 
 
         }
         else if(event.data == YT.PlayerState.ENDED){
+          console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
-         //  if (buttonVal == 'Wait!') {
-//               $('#play').attr('value', 'Replay');
-//           }
-//           else if (buttonVal == 'Continue') {
-//               $('#play').attr('value', 'Replay');
-//               $('#stepf').hide();
-//               $('#stepb').hide();
-//               $('#jumpf').hide();
-//               $('#jumpb').hide();
-//               $('#inputContainer').hide(200);
-//           }
-		 
-		   console.log("hi bei playNum: " + playNum);
-			
-		   // ADDED BY BEI
-		   if(playNum > 1){
-		   	if(buttonVal == 'Wait!'){
-		   	  console.log("hide play");
-		   	  $('#play').hide();
-		   	}
-		   	else if (buttonVal == 'Continue') {
-		      $('#play').hide();
-              $('#stepf').hide();
-              $('#stepb').hide();
-              $('#jumpf').hide();
-              $('#jumpb').hide();
-              $('#inputContainer').hide(200);
-          	}
-          	
-          	 $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
-          	 
+          
+          if(sessionStorage.getItem("task")){
+			   if(buttonVal == 'Mistake!'){
+				  $('#play').hide();
+			   }
+			   else if (buttonVal == 'Continue') {
+				  $('#play').hide();
+				  $('#stepf').hide();
+				  $('#stepb').hide();
+				  $('#jumpf').hide();
+				  $('#jumpb').hide();
+				  $('#inputContainer').hide(200);
+			  }
           }else{
-          	if (buttonVal == 'Wait!') {
-          	  console.log("show play");
-              $('#play').attr('value', 'Play');
-          	}
-          	else if (buttonVal == 'Continue') {
-              $('#play').attr('value', 'Play');
+          		if (buttonVal == 'Mistake!') {
+          	  console.log("play end and wait button change to replay");
+              $('#play').attr('value', 'Replay');
+          }
+		
+		  
+          else if (buttonVal == 'Continue') {
+          	  console.log("play end and continue button change to replay");
+              $('#play').attr('value', 'Replay');
               $('#stepf').hide();
               $('#stepb').hide();
               $('#jumpf').hide();
               $('#jumpb').hide();
               $('#inputContainer').hide(200);
-          	}
           }
-
-         
+          }
+          
+          $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
         }
       }
 

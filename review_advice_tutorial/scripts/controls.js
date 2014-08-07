@@ -87,9 +87,11 @@ $(document).ready( function() {
 
             Controls.startPlayback();
             Controls.vidIsPlaying = true;
-            
-             signal = "PLAY";	// ADD BY BEI
+		
+			signal = 'PLAY';
+
         }
+        
         else if (buttonVal == 'Wait!') {
             $('#play').attr('value', 'Continue');
             $('#stepf').show();
@@ -107,6 +109,7 @@ $(document).ready( function() {
         $('#playVid').click();
     });
 
+    
     // TODO: Move this to youtube.js
     // Step Forward/Backward buttons:
     $('#stepb').click(function() {
@@ -115,6 +118,7 @@ $(document).ready( function() {
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
+        signal = "STEP";
     });
     $('#stepf').click(function() {
 	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
@@ -122,15 +126,18 @@ $(document).ready( function() {
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
+        signal = "STEP";
     });
     // Jump Forward/Backward buttons:
     $('#jumpb').click(function() {
     console.log("Seeking to (-1): " + (player.getCurrentTime()-1));
         player.seekTo(player.getCurrentTime()-.5);
+        signal = "STEP";
     });
     $('#jumpf').click(function() {
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
         player.seekTo(player.getCurrentTime()+.5);
+        signal = "STEP";
     });
 
 
@@ -149,8 +156,10 @@ $(document).ready( function() {
     }
     else {
         $('#vidCover').click( function() {
-            console.log("Cover clicked...");
-            $('#play').click();
+           if(sessionStorage.getItem("play")){
+        		console.log("Cover clicked BEI...");
+            	$('#play').click();
+        	}
         });
     }
     

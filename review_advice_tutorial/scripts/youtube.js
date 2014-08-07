@@ -17,11 +17,18 @@
       startTime = 0;
       endTime = 600;
       if( gup('video') == '' ) {
-	alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
+		alert("No video selected. Please add a '?video=' value to the URL, then reload the page.");
       }
       else {
-	//vidId = gup('video');
-	vidId = 'CU8Xe_Yh9Lc';
+		//vidId = gup('video');
+		if(sessionStorage.getItem("task")){
+			vidId = gup('video');
+			console.log("TASK TRUE");
+		}else{
+			vidId = 'CU8Xe_Yh9Lc';
+			console.log("TUTORIAL TRUE");
+		}
+		
       }
 
       //alert("SUCCESS (yt.js) --> " + startTime + " | " + endTime + " | " + vidId)
@@ -75,11 +82,12 @@
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         //event.target.playVideo();
-	player.setOption('cc', 'fontSize', -1);
-	//player.getOption('cc', 'track')['languageCode'] = "";
-	//alert(player.getOptions('cc'));
-	//player.setOption('cc', 'track', '');
-	player.mute();
+        player.setPlaybackRate(0.50);
+		player.setOption('cc', 'fontSize', -1);
+		//player.getOption('cc', 'track')['languageCode'] = "";
+		//alert(player.getOptions('cc'));
+		//player.setOption('cc', 'track', '');
+		player.mute();
         startTimeSlider();
       }
 
@@ -103,11 +111,12 @@
 
         }
         else if(event.data == YT.PlayerState.ENDED){
-          console.log("play end");
+          console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
           if (buttonVal == 'Wait!') {
           	  console.log("play end and wait button change to replay");
               $('#play').attr('value', 'Replay');
+              
           }
           else if (buttonVal == 'Continue') {
           	  console.log("play end and continue button change to replay");

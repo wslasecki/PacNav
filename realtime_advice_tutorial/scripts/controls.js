@@ -1,6 +1,5 @@
-var playNum = 0;
-var signal;					// ADD BY BEI
-//var isTutorial = true;		// ADD BY BEI
+var signal; 	// ADDED BY BEI
+var isFirstTime = true;		//ADDED BY BEI
 
 var Controls = {
 	getTime: function() {
@@ -18,9 +17,7 @@ var Controls = {
 			// Run the first time
 			Viewer.load();
 			// Setup a callback for future runs
-			// if(playNum < 2){
-// 			Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
-// 			}
+			Viewer.refreshID = setInterval( function() { Viewer.refresh(); }, Viewer.refreshInterval);
 		}
 		else {
 			Viewer.pauseTime += Controls.getTime() - Viewer.startCurPauseTime;
@@ -80,24 +77,10 @@ $(document).ready( function() {
     $('#play').click(function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
-		  // ADD BY BEI
-		  if (buttonVal == 'Play'){
-		  	playNum++;
-		  }
-		  
-        //if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
-          if (buttonVal == 'Continue' || buttonVal == 'Play') {
-            console.log("new PlayNum: "+ playNum);
-          	if(playNum > 2){
-          		$('#play').hide();
-            	$('#stepf').hide();
-            	$('#stepb').hide();
-            	$('#jumpf').hide();
-            	$('#jumpb').hide();
-            	$('#inputContainer').hide(200);
-          	}else{
-          		console.log("play button change to wait");
-            $('#play').attr('value', 'Wait!');
+
+        if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
+            //$('#play').attr('value', 'Wait!');
+            $('#play').attr('value', 'Mistake!');
             $('#stepf').hide();
             $('#stepb').hide();
             $('#jumpf').hide();
@@ -106,39 +89,35 @@ $(document).ready( function() {
 
             Controls.startPlayback();
             Controls.vidIsPlaying = true;
-            
-            signal = "PLAY";	// ADD BY BEI
-          	}
-            
+		
+			signal = 'PLAY';
+
         }
-        else if (buttonVal == 'Wait!') {
-        	if(playNum > 2){
-        		$('#play').hide();
-        	}else{
-        		console.log("play button change to continue");
+        
+        // else if (buttonVal == 'Wait!') {
+        else if (buttonVal == 'Mistake!') {
             $('#play').attr('value', 'Continue');
-            $('#stepf').show();
-            $('#stepb').show();
-            $('#jumpf').show();
-            $('#jumpb').show();
-            $('#inputContainer').show(400);
+            // $('#stepf').show();
+//             $('#stepb').show();
+//             $('#jumpf').show();
+//             $('#jumpb').show();
+//             $('#inputContainer').show(400);
+
             Controls.pausePlayback();
             Controls.vidIsPlaying = false;
             
             signal = "WAIT";
-        	}
-            
-
-           
         };
 
         $('#playVid').click();
         
         // ADDED BY BEI
-        //isTutorial = false;
-        console.log("playNum: " + playNum);
+        if(sessionStorage.getItem("task")){
+        	isFirstTime = false;
+        }
     });
 
+    
     // TODO: Move this to youtube.js
     // Step Forward/Backward buttons:
     $('#stepb').click(function() {
@@ -180,12 +159,28 @@ $(document).ready( function() {
         $('#vidCover').html("<div style='font-size: 36px; font-weight: bold; color: #B11; text-align: center'><br><br>Please accept the HIT to continue!</div>");
     }
     else {
-        $('#vidCover').click( function() {
-        	if(playNum < 2){
-				console.log("Cover clicked...");
-				$('#play').click();
-			}
-        });
+    	// ADDED BY BEI
+    	if(sessionStorage.getItem("task")){
+        	
+        	$('#vidCover').click( function() {
+        		if(isFirstTime){
+					console.log("Cover clicked...");
+					$('#play').click();
+					isFirstTime = false;	
+            	}
+        	});
+    
+        }else{
+        	
+        	$('#vidCover').click( function() {
+        		if(sessionStorage.getItem("play")){
+        			console.log("Cover clicked BEI...");
+            		$('#play').click();
+        		}
+            	
+        	});
+        }
+        
     }
     
 });

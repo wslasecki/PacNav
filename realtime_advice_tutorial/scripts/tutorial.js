@@ -1,116 +1,123 @@
 var instructions = document.getElementById("tutorialMessages");
-
 var tutorial;
 var next = false;
-var answer = false;
-var isFirstMistake = true;
+var mistakeNum = 0;
 
 var tutorialMessage = 0;
 var tutorialMessages = [
-"In this study, you will watch a video with respect to a pac-man playing a game, and you will need to point out the time that the pac-man has made a mistake <br /><br />Click the screen to continue",
-"To begin searching the mistake, click Play button to watch the video, remember that you can only watch the video once <br /><br />Click Play button to continue",
-"If you think the pac-man is making a mistake, click Wait button and step back and forward to find the exact time that the pac-man is making a mistake <br /><br />Click Wait button to continue",
-"After you find the exact mistake time, please click Mistake button to give your suggestion <br /><br />Click Mistake button to continue",
-"Oh, no, your suggestion is wrong, the correct mistake time should be at 4.11s! You must step back or forward to find the mistake time and give suggestion to move on<br /><br />Click the screen to continue",
-"Good job! You just give the correct suggestion. The pac-man did make a mistake at that time! <br /><br />Click the screen to continue",
-"Now you can begin the real task to find the time that the pacman is making a mistake! <br /><br />Click the screen to continue"
+"In this study, you will watch a video with respect to a pac-man playing a game, and you will need to point out the time that the pac-man is making a mistake. There's only one mistake in each video. <br /><br />Click the screen to continue",
+"To begin to search the mistake, click Play button to watch the video, remember that you can watch the video multiple times in this tutorial, but you can only watch the video one time in real task<br /><br />Click Play button to continue",
+"If you think the pac-man is making a mistake, click Mistake button to give your suggestion. If the video ends, click Replay button to watch it again<br /><br />Click Wait or Replay button to continue",
+
+"You have made the wrong suggestion for more than three times, the correct mistake time should be around 5.45 to 5.60",
+"Oh, no, pacman still doesn't make any mistake! <br /> You must keep watching the video to find the mistake time and give suggestion to move on",
+"Oh, no, you have missed the correct mistake time! <br /> You can watch the video again to find the correct mistake time",
+"Good job! You just gave the correct suggestion. The pac-man did make a mistake at that time! <br /><br />Click the screen to continue",
+"Now you can start to do the real task to find the time that the pacman is making a mistake! Remember that you can only watch the video once!<br /><br />Click the screen to continue"
 ];
 
-window.addEventListener("click", mouseClicked, false);
+initiate();
 
-tutorialSetup();
+function initiate(){
+	if(sessionStorage.getItem("task")){
+		console.log("NO TUTORIAL");
+		instructions.innerHTML = "";
+		return;
+	}else{
+		window.addEventListener("click", mouseClicked, false);
+		tutorialSetup();
+	}
+}
 
 function tutorialSetup(){
-	console.log("in tutorialSetup");
-	//disable all buttons
+	console.log("tutorial setup");
+	//disable play and submit buttons
 	$("#play").prop('disabled', true);
 	$("#submitButton").prop('disabled', true);
-    instructions.innerHTML = tutorialMessages[0];
-    tutorial = tutorialStart;
+	instructions.innerHTML = tutorialMessages[0];
+	tutorial = tutorialStart;
 }
 
 function tutorialStart(){
-    console.log("in tutorialStart");
+	console.log("tutorial start");
     $("#play").prop('disabled', false);
 	$("#submitButton").prop('disabled', true);
 	tutorial = tutorialWait;
 	highlight("play");
-	++tutorialMessage;
-	instructions.innerHTML = tutorialMessages[tutorialMessage];
+	instructions.innerHTML = tutorialMessages[1];
+	
+	sessionStorage.setItem("play", true);
 }
 
 function tutorialWait(){
-    if(signal == "PLAY"){
-    console.log("in tutorialWait");
-	tutorial = tutorialMistake;
-	highlight("play");
-	++tutorialMessage;
-	instructions.innerHTML = tutorialMessages[tutorialMessage];
+	console.log("tutorial wait");
+    if(signal == "PLAY"){	// after clicking the play button
+    	console.log("tutorial wait signal play");
+		$("#submitButton").prop('disabled', true);
+		tutorial = tutorialAnswer;
+		highlight("play");
+		instructions.innerHTML = tutorialMessages[2];
+		instructions.style.top = "550px";
     }
-}
-
-function tutorialMistake(){
-    if(signal == "WAIT"){
-    console.log("in tutorialMistake");
-	tutorial = tutorialAnswer;
-	highlight("mistake");
-	++tutorialMessage;
-	instructions.innerHTML = tutorialMessages[tutorialMessage];
-	instructions.style.top = "615px";
+    else if(signal == "MISTAKE"){
+    	console.log("wait mistake");
+    	tutorial = tutorialAnswer;
     }
 }
 
 function tutorialAnswer(){
+	console.log("tutorial answer");
+	
     if(signal == "MISTAKE"){
-		console.log("mistake time sec: " + timeSec);
-		console.log("mistake time frac" + timeFrac);
+    	console.log("BEI SIGNAL MISTAKE!!!");
+    	$("#submitButton").prop('disabled', true);
 		var time = timeSec + '.' + timeFrac;
-		if(time == '4.09' || time == '4.10' || time == "4.10" || time == "4.11"){
-			if(isFirstMistake){
-				tutorialMessage += 2;
-			}else{
-				++tutorialMessage;
-			}	
+		time = parseFloat(time);
+		
+		if(time >= 4.00 && time <= 6.00){
+			console.log("CORRECT MISTAKE TIME");
 			$('#play').hide();
         	$('#stepf').hide();
         	$('#stepb').hide();
         	$('#jumpf').hide();
         	$('#jumpb').hide();
     		$('#inputContainer').hide(200);
+    		tutorialMessage = tutorialMessages.length - 2;
 			instructions.innerHTML = tutorialMessages[tutorialMessage];
 			instructions.style.top = "550px";
-			answer = true;
 			tutorial = tutorialFinish;
 		}else{
-			if(isFirstMistake){
-				++tutorialMessage;
-				isFirstMistake = false;
+			console.log("WRONG MISTAKE TIME");
+			console.log("mistakeNum: " + mistakeNum);
+			if(mistakeNum < 3){
+				if(time < 5.50){
+					tutorialMessage = tutorialMessages.length - 4;
+				}else if(time > 5.54){
+					tutorialMessage = tutorialMessages.length - 3;
+				}
+			}else{
+				tutorialMessage = tutorialMessages.length - 5;
 			}
+			
 			instructions.innerHTML = tutorialMessages[tutorialMessage];
-			answer = false;
-			tutorial = tutorialAnswer;
-		}
-		
+			tutorial = tutorialWait;
+			mistakeNum++;
+		}	
 	}
 }
 
 function tutorialFinish(){
     if(next){
-    	if(!answer){
-    		tutorialMessage += 2;
-    	}else{
-    		++tutorialMessage;
-    	}
-    	
+    	$("#submitButton").prop('disabled', true);
+    	++tutorialMessage;
 		instructions.innerHTML = tutorialMessages[tutorialMessage];
-		
 		tutorial = taskStart;
 	}
-	
 }
 
 function taskStart(){
 	if(next){
+		$("#submitButton").prop('disabled', true);
 		$('.suggestEntry').empty();		// clear the suggestion content
 		instructions.innerHTML = "";
 		
@@ -119,19 +126,33 @@ function taskStart(){
 
  		console.log("vidId: " + vidId);
  		console.log("videoPath: " + videoPath);
- 		videoPath = changeUrl(videoPath, vidId);
- 		document.getElementById("vidPlayer").src = videoPath;
-
- 		$('#play').show();
- 		$('#play').attr('value', 'Play');
+ 		// videoPath = changeUrl(videoPath, vidId);
+//  		document.getElementById("vidPlayer").src = videoPath;
+		
+		var url = window.location.href;
+		console.log("url: " + url);
+		sessionStorage.setItem("task", true);
+ 		window.location = url.slice(0, -11) + vidId;
+ 		
  		tutorial = finish;
 
-		// 添加代码开始真正的task 还原到最初的任务模式 ！！！  记得还有video的三角符号开始标记没有禁止！！！
 	}
 }
 
+
 function finish(){
 	console.log("finish");
+}
+
+function update(){
+	console.log("in update");
+	tutorial();
+	next = false;
+}
+
+function mouseClicked(e){
+    next = true;
+    update();
 }
 
 
@@ -170,16 +191,4 @@ function highlightUpdate(){
 	hstep += 0.15;
 	setTimeout(highlightUpdate, 50);
     }
-}
-
-function update(){
-	console.log("in update");
-	tutorial();
-	next = false;
-}
-
-function mouseClicked(e){
-
-    next = true;
-    update();
 }

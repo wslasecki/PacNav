@@ -56,7 +56,6 @@ Suggestions = {
 		// DELETED BY BEI
 		//Suggestions.defineButtons();
 
-
 		$('.responseButton').click( function() {
 			buttonID = $(this).attr('id');
 			console.log("Button #" + buttonID + " clicked!");

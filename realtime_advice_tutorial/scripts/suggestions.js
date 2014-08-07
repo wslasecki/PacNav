@@ -1,6 +1,3 @@
-var timeSec;
-var timeFrac;
-
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -15,7 +12,7 @@ Suggestions = {
 	buttonMap: new Array(),
 	numSugg: 0,
 
-	//DELETED BY BEI
+	// DELETED BY BEI
 	// defineButtons: function() {
 // 		Suggestions.buttonMap["respLeft"] = "left";
 // 		Suggestions.buttonMap["respUp"] = "up";
@@ -23,18 +20,22 @@ Suggestions = {
 // 		Suggestions.buttonMap["respRight"] = "right";
 // 	},
 
-	addSugg: function(toAddID) {
+	addSugg: function() {
 		//
+		
 		timeSplit = player.getCurrentTime().toString().split(".");
+		console.log("current time: " + player.getCurrentTime());
+		console.log("timeSplit[0]: " + timeSplit[0]);
+		console.log("timeSplit[1]: " + timeSplit[1]);
 		timeSec = timeSplit[0];
         // GABE made changes from substring(0,1)
 		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time
 		newID = "suggestion_" + timeSec + "-" + timeFrac;  // Use the current time to destinguish entries. Replace decimal because JQuery doesn't like them
 
 		//newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan should have gone <b>" + Suggestions.buttonMap[toAddID] + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
-		// ADDED BY BEI
+		//ADDED BY BEI
 		newEntry = "<div id='" + newID + "' class='suggestEntry'>PacMan has made a mistake <b>" + "</b> at " + timeSec + "." + timeFrac + "s!</div>";
-
+		
 		if( $('#'+newID).length != 0 ) {
 			// If the suggestion already exists, replace it
 			console.log("Suggestion already exists for this timestamp. Replacing...");
@@ -56,20 +57,37 @@ Suggestions = {
 	},
 
 	init: function() {
+		// DELETED BY BEI
 		//Suggestions.defineButtons();
 
 
-		$('.responseButton').click( function() {
-			buttonID = $(this).attr('id');
-			console.log("Button #" + buttonID + " clicked!");
+		// $('.responseButton').click( function() {
+// 			// buttonID = $(this).attr('id');
+// // 			console.log("Button #" + buttonID + " clicked!");
+// 
+// 			// Add this to the suggestions set
+// 			//Suggestions.addSugg(buttonID, player.getCurrentTime());
+// 			Suggestions.addSugg();
+// 			$('#legion-submit').removeAttr('DISABLED');
+// 			
+// 			signal = "MISTAKE";
+// 		});
 
-			// Add this to the suggestions set
-			Suggestions.addSugg(buttonID, player.getCurrentTime());
+		$('#play').click( function() {
+			var buttonVal = $('#play').attr('value');
+			if(buttonVal == 'Continue'){
+				//buttonID = $(this).attr('id');
+				//console.log("Button #" + buttonID + " clicked!");
 
-			$('#legion-submit').removeAttr('DISABLED');
+				// Add this to the suggestions set
+				//Suggestions.addSugg(buttonID, player.getCurrentTime());
+				
+				Suggestions.addSugg(player.getCurrentTime());
+				$('#legion-submit').removeAttr('DISABLED');
 			
-			signal = "MISTAKE";		// ADD BY BEI
-
+				signal = "MISTAKE";
+			}
+			
 		});
 	}
 }
