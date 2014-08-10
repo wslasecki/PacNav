@@ -21,8 +21,11 @@ Suggestions = {
 // 	},
 
 	addSugg: function(toAddID) {
-		//
-		timeSplit = player.getCurrentTime().toString().split(".");
+		// GABE: Read from div instead of current time to get gui and sugg in sync
+        var timeDiv = document.getElementById('playTime').textContent;
+        time_ = timeDiv.toString().split("/");
+        timeSplit = time_[0].toString().split(".");
+		// GABE: timeSplit = player.getCurrentTime().toString().split(".");
 		timeSec = timeSplit[0];
         // GABE made changes from substring(0,1)
 		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time

@@ -8,6 +8,7 @@ function getQueryVariable(variable) {
     return(false);
 }
 
+
 Suggestions = {
 	buttonMap: new Array(),
 	numSugg: 0,
@@ -21,9 +22,11 @@ Suggestions = {
 // 	},
 
 	addSugg: function() {
-		//
-		
-		timeSplit = player.getCurrentTime().toString().split(".");
+		// GABE: Read from div instead of current time to get gui and sugg in sync
+		var timeDiv = document.getElementById('playTime').textContent;
+        time_ = timeDiv.toString().split("/");
+        timeSplit = time_[0].toString().split(".");
+		// GABE: timeSplit = player.getCurrentTime().toString().split(".");
 		console.log("current time: " + player.getCurrentTime());
 		console.log("timeSplit[0]: " + timeSplit[0]);
 		console.log("timeSplit[1]: " + timeSplit[1]);
@@ -81,8 +84,11 @@ Suggestions = {
 
 				// Add this to the suggestions set
 				//Suggestions.addSugg(buttonID, player.getCurrentTime());
-				
-				Suggestions.addSugg(player.getCurrentTime());
+
+                // GABE: Delay required to allow time to be in sync between gui and sugg
+                window.setTimeout(Suggestions.addSugg, 150);
+
+				//Suggestions.addSugg(player.getCurrentTime());
 				$('#legion-submit').removeAttr('DISABLED');
 			
 				signal = "MISTAKE";
