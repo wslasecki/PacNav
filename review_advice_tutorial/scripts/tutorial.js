@@ -6,13 +6,13 @@ var mistakeNum = 0;
 var tutorialMessage = 0;
 var tutorialMessages = [
 "In this study, you will watch a video with respect to a pac-man playing a game, and you will need to point out the time that the pac-man is making a mistake. There's only one mistake in each video. <br /><br />Click the screen to continue",
-"To begin to search the mistake, click Play button to watch the video, remember that you can watch the video multiple times <br /><br />Click Play button to continue",
-"If you think the pac-man is making a mistake, click Wait button and step back and forward to find the exact time that the pac-man is making a mistake. If the video ends, click Replay button to watch it again<br /><br />Click Wait or Replay button to continue",
-"You can click Replay button to watch the video again to find the mistake time <br /><br /> Click Replay button to continue",
-"After you find the exact mistake time, please click Mistake button to give your suggestion <br /><br />Click Mistake button to continue",
-"You have made the wrong suggestion for more than three times, the correct mistake time should be around 5.45 to 5.60",
-"Oh, no, pacman still doesn't make any mistake! <br /> You must keep watching the video to find the mistake time and give suggestion to move on",
-"Oh, no, you have missed the correct mistake time! <br /> You can step back to find the mistake time and give suggestion to move on",
+"Click the Play button to watch the video. Remember that you can watch the video multiple times.",
+"If you think the pac-man is making a mistake, click Wait button and step back and forward to find the exact time that the pac-man is making a mistake. If the video ends, click Replay button to watch it again. <br /><br />Click Wait or Replay button to continue",
+"You can click Replay button to watch the video again to find the mistake time. <br /><br /> Click Replay button to continue",
+"After you find the exact mistake time, please click Mistake button to give your suggestion. <br /><br />Click Mistake button to continue",
+"You have made the wrong suggestion over three times. PacMan makes a mistake at roughly 5.50. Please step to time 5.50 and identify that a mistake was made.",
+"PacMan has not made any mistakes yet! <br /> Please continue watching the video to find the mistake.",
+"PacMan has already made a mistake. <br />  Please replay the video or step back to find the time of the mistake.",
 "Good job! You just gave the correct suggestion. The pac-man did make a mistake at that time! <br /><br />Click the screen to continue",
 "Now you can start to do the real task to find the time that the pacman is making a mistake! <br /><br />Click the screen to continue"
 ];
