@@ -3,7 +3,6 @@ body {
   font-family: Arial;
 }
 
-
 #textWrapper {
   /*margin: 1%;*/
   /*background-color: white;*/
@@ -299,6 +298,6 @@ appearance: none;
     border: solid 5px white;
     padding: 5px 5px 5px 5px;
     width:800px;
-    height:520px;
+    height:480px;
     z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/
 }
