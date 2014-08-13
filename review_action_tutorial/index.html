@@ -1,0 +1,130 @@
+<html><head>
+<title>Pacman Online Learning</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script><style type="text/css"></style>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<!--script type="text/javascript" src="http://code.google.com/p/jquery-color-utils/downloads/detail?name=jquery.color.utils-0.1.0.js"></script-->
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+
+<!--link rel="stylesheet" href="//roc.cs.rochester.edu/LegionJS/LegionTools/LegionJS_Libraries/legion.css" /-->
+<script src="scripts/vars.js"></script>
+<!--script src="//roc.cs.rochester.edu/LegionJS/LegionTools/LegionJS_Libraries/legion.js"></script-->
+
+
+
+<script src="scripts/gup.js?v123" type="text/javascript"></script>
+<script src="scripts/viewer.js" type="text/javascript"></script>
+<script src="scripts/controls.js?v1234567835" type="text/javascript"></script>
+<script src="scripts/suggestions.js?v1223" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js"></script>
+<script type="text/javascript" src="scripts/csspopup.js"></script>
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+</head>
+<body>
+<div id="blanket" style="display:none;"></div>
+<div id="popUpDiv" style="display:none;">
+    <a href="#" onclick="popup('popUpDiv')" style="text-decoration:none">[X] Close</a><br />
+    <iframe src="instructions.html" width="100%" height="95%" frameborder="0"></iframe>
+</div>
+<div id="instructionContainer">
+<b>IMPORTANT:</b> Please read the <a href="#" onclick="popup('popUpDiv')">instructions</a> carefully before attempting.
+</div>
+<div id="videoContainer">
+	<!-- YouTube Player Container -->
+	<div id="vidCover"></div>
+	<div id="vidPlayer"></div>
+		<div id = "controls">
+			<a class="button" id="playVid" style="display: none;">
+				<span id ="but_swi" class="_play">Play</span>
+			</a>
+		</div>
+		<script src="scripts/youtube.js?v2234567012"></script>
+	</div>
+
+
+	<!-- Caption Playback Controls -->
+	<div id="controls">
+        <input type="button" class="button stepButton" id="jumpb" value="<< Jump"></input>
+		<input type="button" class="button stepButton" id="stepb" value="< Step"></input>
+		<input type="button" class="button" id="play" value="Play"></input>
+		<input type="button" class="button stepButton" id="stepf" value="Step >"></input>
+        <input type="button" class="button stepButton" id="jumpf" value="Jump >>"></input>
+	</div>
+
+	<div id="playTime">0</div>
+	<!--div id="status">
+	</div-->
+
+
+</div>
+
+<div id="inputContainer">
+
+	<div id="textWrapper">
+		<div id="task-instructions">
+			What action should the player have taken at this point?
+		</div>
+	</div>
+
+	<div id="respButtonContainer">
+		<input type="button" id="respLeft" class="responseButton" value="&larr;"></input>
+		<input type="button" id="respUp" class="responseButton" value="&uarr;"></input>
+		<input type="button" id="respDown" class="responseButton" value="&darr;"></input>
+		<input type="button" id="respRight" class="responseButton" value="&rarr;"></input>
+	</div>
+	
+	<!--div id="textWrapper">
+		<div id="task-instructions">
+			The player has made a mistake!
+		</div>
+	</div>
+
+	<div id="respButtonContainer">
+		<input type="button" id="mistake" class="responseButton" value="Mistake"></input>
+	</div!-->
+
+</div>
+
+<div id="suggestContainer">
+
+	<div id="suggestHeader">
+		Your Suggestions:
+	</div>
+
+	<div id="suggestContent">
+	</div>
+</div>
+
+<div id="submitContainer">
+	<!--form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit"-->
+	<form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit">
+		<input type="hidden" name="assignmentId" value="" id="assignmentId" />
+        <input type="hidden" name="Video" value="" id="videoId" />
+        <input type="hidden" name="Suggestion" value="" id="suggestId" />
+		<input type="submit" class="button" id="submitButton" value="Submit HIT" />
+	</form>
+	<script language="Javascript">turkSetAssignmentID();</script>
+</div>
+
+<!-- div id="submit-div">
+        <form id="submit-form">
+                <input type="hidden" name="money" id="money_field"></div>
+                <input type="hidden" name="assignmentId" id="submit-assignmentId">
+        </form>
+</div -->
+
+<div id="sidebar"></div>
+<div id="instructions"></div>
+<p id='legion-money' style="display:none;">.15</p>
+
+<div id="tutorialMessages" style="width: 640px; position: absolute; left: 34px; top: 550px; font-size: 20px; color: #ffcc00"> 
+In this study, you will watch a video with respect to a pac-man playing a game, and you will need to point out the time that the pac-man is making a mistake.
+</div>
+<script src="scripts/tutorial.js?v723456791245" type="text/javascript"></script>
+
+</body>
+</html>
