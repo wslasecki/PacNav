@@ -144,7 +144,10 @@
           }
           }
           
-          $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
+          if(sessionStorage.getItem("task")){
+          	$("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
+          }
+          
         }
       }
 

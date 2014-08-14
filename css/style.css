@@ -260,12 +260,12 @@ appearance: none;
   background: #292928;
   position: absolute;
   top: 40px;
-  height: 456px;
   /*overflow-x: scroll;*/
   left: 672px;
   width: 297px;
   padding: 5px 5px 5px 5px;
 }
+
 
 #suggestHeader {
   font-size: 24px;

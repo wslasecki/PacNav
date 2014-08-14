@@ -113,20 +113,23 @@
         else if(event.data == YT.PlayerState.ENDED){
           console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
-          if (buttonVal == 'Wait!') {
-          	  console.log("play end and wait button change to replay");
-              $('#play').attr('value', 'Replay');
-              
+          
+          		if (buttonVal == 'Wait!') {
+					  console.log("play end and wait button change to replay");
+					  $('#play').attr('value', 'Replay');
+			  
+				}
+			    else if (buttonVal == 'Continue') {
+					  console.log("play end and continue button change to replay");
+					  $('#play').attr('value', 'Replay');
+					  $('#stepf').hide();
+					  $('#stepb').hide();
+					  $('#jumpf').hide();
+					  $('#jumpb').hide();
+					  $('#inputContainer').hide(200);
           }
-          else if (buttonVal == 'Continue') {
-          	  console.log("play end and continue button change to replay");
-              $('#play').attr('value', 'Replay');
-              $('#stepf').hide();
-              $('#stepb').hide();
-              $('#jumpf').hide();
-              $('#jumpb').hide();
-              $('#inputContainer').hide(200);
-          }
+          
+          
           $("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
         }
       }

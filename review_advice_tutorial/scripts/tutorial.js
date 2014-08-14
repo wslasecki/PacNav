@@ -21,8 +21,10 @@ initiate();
 
 function initiate(){
 	if(sessionStorage.getItem("task")){
-		console.log("NO TUTORIAL");
+		//console.log("NO TUTORIAL");
 		instructions.innerHTML = "";
+		document.getElementById("suggestContainer").style.height = "456px";
+		document.getElementById("submitButton").style.display = "";
 		return;
 	}else{
 		window.addEventListener("click", mouseClicked, false);
@@ -31,18 +33,22 @@ function initiate(){
 }
 
 function tutorialSetup(){
-	console.log("tutorial setup");
+	//console.log("tutorial setup");
 	//disable play and submit buttons
 	$("#play").prop('disabled', true);
-	$("#submitButton").prop('disabled', true);
-	instructions.innerHTML = tutorialMessages[0];
-	tutorial = tutorialStart;
+	if(isClose){
+		instructions.innerHTML = tutorialMessages[0];
+		tutorial = tutorialStart;
+	}else{
+		tutorial = tutorialSetup;
+	}
+	
 }
 
 function tutorialStart(){
-	console.log("tutorial start");
+	//console.log("tutorial start");
     $("#play").prop('disabled', false);
-	$("#submitButton").prop('disabled', true);
+	//$("#submitButton").prop('disabled', true);
 	tutorial = tutorialWait;
 	highlight("play");
 	instructions.innerHTML = tutorialMessages[1];
@@ -51,44 +57,44 @@ function tutorialStart(){
 }
 
 function tutorialWait(){
-	console.log("tutorial wait");
+	//console.log("tutorial wait");
     if(signal == "PLAY"){	// after clicking the play button
-    	console.log("tutorial wait signal play");
-		$("#submitButton").prop('disabled', true);
+    	//console.log("tutorial wait signal play");
+		//$("#submitButton").prop('disabled', true);
 		tutorial = tutorialMistake;
 		highlight("play");
 		instructions.innerHTML = tutorialMessages[2];
-		instructions.style.top = "550px";
+		//instructions.style.top = "550px";
     }
     else if(signal == "STEP" || signal == "MISTAKE"){
-    	console.log("wait mistake");
+    	//console.log("wait mistake");
     	tutorial = tutorialAnswer;
     }
 }
 
 function tutorialMistake(){
-	console.log("tutorial mistake");
-	console.log("SIGNAL: " + signal);
+	//console.log("tutorial mistake");
+	//console.log("SIGNAL: " + signal);
     if(signal == "WAIT"){	// after clicking the wait button
-		$("#submitButton").prop('disabled', true);
+		//$("#submitButton").prop('disabled', true);
 		tutorial = tutorialAnswer;
 		highlight("mistake");
 		instructions.innerHTML = tutorialMessages[4];
-		instructions.style.top = "615px";
+		//instructions.style.top = "615px";
     }
 }
 
 function tutorialAnswer(){
-	console.log("tutorial answer");
+	//console.log("tutorial answer");
 	
     if(signal == "MISTAKE"){
-    	console.log("BEI SIGNAL MISTAKE!!!");
-    	$("#submitButton").prop('disabled', true);
+    	//console.log("BEI SIGNAL MISTAKE!!!");
+    	//$("#submitButton").prop('disabled', true);
 		var time = timeSec + '.' + timeFrac;
 		time = parseFloat(time);
 		
 		if(time >= 5.50 && time <= 5.54){
-			console.log("CORRECT MISTAKE TIME");
+			//console.log("CORRECT MISTAKE TIME");
 			tutorialMessage = tutorialMessages.length - 2;
 			$('#play').hide();
         	$('#stepf').hide();
@@ -97,11 +103,11 @@ function tutorialAnswer(){
         	$('#jumpb').hide();
     		$('#inputContainer').hide(200);
 			instructions.innerHTML = tutorialMessages[tutorialMessage];
-			instructions.style.top = "550px";
+			//instructions.style.top = "550px";
 			tutorial = tutorialFinish;
 		}else{
-			console.log("WRONG MISTAKE TIME");
-			console.log("mistakeNum: " + mistakeNum);
+			//console.log("WRONG MISTAKE TIME");
+			//console.log("mistakeNum: " + mistakeNum);
 			if(mistakeNum < 3){
 				if(time < 5.50){
 					tutorialMessage = tutorialMessages.length - 4;
@@ -119,17 +125,17 @@ function tutorialAnswer(){
 		
 	}
 	else if(signal == "PLAY"){	// after clicking the continue button   	
-		$("#submitButton").prop('disabled', true);
+		//$("#submitButton").prop('disabled', true);
 		tutorial = tutorialMistake;
 		highlight("play");	
 		instructions.innerHTML = tutorialMessages[2];
-    	instructions.style.top = "550px";
+    	//instructions.style.top = "550px";
 	}
 }
 
 function tutorialFinish(){
     if(next){
-    	$("#submitButton").prop('disabled', true);
+    	//$("#submitButton").prop('disabled', true);
     	++tutorialMessage;
 		instructions.innerHTML = tutorialMessages[tutorialMessage];
 		tutorial = taskStart;
@@ -138,22 +144,22 @@ function tutorialFinish(){
 
 function taskStart(){
 	if(next){
-		$("#submitButton").prop('disabled', true);
+		//$("#submitButton").prop('disabled', true);
 		$('.suggestEntry').empty();		// clear the suggestion content
 		instructions.innerHTML = "";
 		
 		var videoPath = document.getElementById("vidPlayer").src;
 		var vidId = gup('video');
 
- 		console.log("vidId: " + vidId);
- 		console.log("videoPath: " + videoPath);
+ 		//console.log("vidId: " + vidId);
+ 		//console.log("videoPath: " + videoPath);
  		//videoPath = changeUrl(videoPath, vidId);
  		//document.getElementById("vidPlayer").src = videoPath;
 		
 		var url = window.location.href;
-		console.log("url: " + url);
+		//console.log("url: " + url);
 		sessionStorage.setItem("task", true);
- 		window.location = url.slice(0, -11) + vidId;
+ 		window.location = url.slice(0, -12) + vidId;
  		
  		tutorial = finish;
 	}

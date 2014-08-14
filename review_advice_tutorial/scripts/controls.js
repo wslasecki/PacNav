@@ -131,12 +131,19 @@ $(document).ready( function() {
     // Jump Forward/Backward buttons:
     $('#jumpb').click(function() {
     console.log("Seeking to (-1): " + (player.getCurrentTime()-1));
+    	if(player.getPlayerState() == 0){
+    		 //player.playVideo();
+        	 player.pauseVideo();
+    	}
+    	
         player.seekTo(player.getCurrentTime()-.5);
         signal = "STEP";
     });
     $('#jumpf').click(function() {
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
+    	
         player.seekTo(player.getCurrentTime()+.5);
+
         signal = "STEP";
     });
 

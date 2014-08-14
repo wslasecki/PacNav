@@ -1,3 +1,4 @@
+
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -89,7 +90,9 @@ Suggestions = {
                 window.setTimeout(Suggestions.addSugg, 150);
 
 				//Suggestions.addSugg(player.getCurrentTime());
-				$('#legion-submit').removeAttr('DISABLED');
+				if(sessionStorage.getItem("task")){
+					$('#legion-submit').removeAttr('DISABLED');
+				}
 			
 				signal = "MISTAKE";
 			}
