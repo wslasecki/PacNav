@@ -49,7 +49,7 @@ Suggestions = {
         var suggestVal = document.getElementById('suggestContent').textContent;
         if(suggestVal.length >= 0)
         {
-            document.getElementById('submitButton').disabled = false;
+            document.getElementById('submitButtonReview').disabled = false;
         }
         document.getElementById('suggestId').value = suggestVal.trim();
         document.getElementById('videoId').value = getQueryVariable('video');
@@ -61,7 +61,7 @@ Suggestions = {
 
 		$('.responseButton').click( function() {
 			buttonID = $(this).attr('id');
-			console.log("Button #" + buttonID + " clicked!");
+			//console.log("Button #" + buttonID + " clicked!");
 
 			// Add this to the suggestions set
 			Suggestions.addSugg(buttonID, player.getCurrentTime());

@@ -70,7 +70,7 @@ $(document).ready( function() {
     $('#jumpf').hide();
     $('#jumpb').hide();
     $('#inputContainer').hide();
-    document.getElementById('submitButton').disabled = true;
+    document.getElementById('submitButtonReview').disabled = true;
 
     // Event routing
     $('#play').click(function() {
@@ -164,7 +164,6 @@ $(document).ready( function() {
     else {
         $('#vidCover').click( function() {
            if(sessionStorage.getItem("play")){
-        		console.log("Cover clicked BEI...");
             	$('#play').click();
         	}
         });

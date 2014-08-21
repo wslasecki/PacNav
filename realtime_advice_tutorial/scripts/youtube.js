@@ -1,4 +1,4 @@
-
+	  var isPause = false;
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -23,10 +23,10 @@
 		//vidId = gup('video');
 		if(sessionStorage.getItem("task")){
 			vidId = gup('video');
-			console.log("TASK TRUE");
+			//console.log("TASK TRUE");
 		}else{
 			vidId = 'CU8Xe_Yh9Lc';
-			console.log("TUTORIAL TRUE");
+			//console.log("TUTORIAL TRUE");
 		}
 		
       }
@@ -93,25 +93,41 @@
 
       function onPlayerStateChange(event){
         if(event.data == YT.PlayerState.PLAYING){
-        	console.log("play playing");
+        	//console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
 			$("#but_swi").html("Pause");
          
-        
+        	
           if(isScrolling){
             startTimeSlider();
             isScrolling = false;
           }
+          
+          if(isPause){
+          	if(!sessionStorage.getItem("task")){
+            	$('.suggestEntry').empty();
+          		player.seekTo(player.getCurrentTime()-10);
+          	}else{
+          		$('#play').hide();
+          	}
+          	
+          }
         }
         else if(event.data == YT.PlayerState.PAUSED){
-        		console.log("play paused");
-            	$("#but_swi").addClass("_play").removeClass("_pause");
+				$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
-
+				
+				if(!sessionStorage.getItem("task")){
+					$('#play').attr('value', 'Replay');
+				}else{
+					$('#play').hide();
+				}
+				
+				isPause = true;
+				
 
         }
         else if(event.data == YT.PlayerState.ENDED){
-          console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
           
           if(sessionStorage.getItem("task")){
@@ -128,13 +144,13 @@
 			  }
           }else{
           		if (buttonVal == 'Mistake!') {
-          	  console.log("play end and wait button change to replay");
+          	  //console.log("play end and wait button change to replay");
               $('#play').attr('value', 'Replay');
           }
 		
 		  
           else if (buttonVal == 'Continue') {
-          	  console.log("play end and continue button change to replay");
+          	  //console.log("play end and continue button change to replay");
               $('#play').attr('value', 'Replay');
               $('#stepf').hide();
               $('#stepb').hide();

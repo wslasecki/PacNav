@@ -23,10 +23,10 @@
 		//vidId = gup('video');
 		if(sessionStorage.getItem("task")){
 			vidId = gup('video');
-			console.log("TASK TRUE");
+			//console.log("TASK TRUE");
 		}else{
 			vidId = 'CU8Xe_Yh9Lc';
-			console.log("TUTORIAL TRUE");
+			//console.log("TUTORIAL TRUE");
 		}
 		
       }
@@ -93,7 +93,7 @@
 
       function onPlayerStateChange(event){
         if(event.data == YT.PlayerState.PLAYING){
-        	console.log("play playing");
+        	//console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
 			$("#but_swi").html("Pause");
          
@@ -104,23 +104,20 @@
           }
         }
         else if(event.data == YT.PlayerState.PAUSED){
-        		console.log("play paused");
+        		//console.log("play paused");
             	$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
 
 
         }
         else if(event.data == YT.PlayerState.ENDED){
-          console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
           
           		if (buttonVal == 'Wait!') {
-					  console.log("play end and wait button change to replay");
 					  $('#play').attr('value', 'Replay');
 			  
 				}
 			    else if (buttonVal == 'Continue') {
-					  console.log("play end and continue button change to replay");
 					  $('#play').attr('value', 'Replay');
 					  $('#stepf').hide();
 					  $('#stepb').hide();

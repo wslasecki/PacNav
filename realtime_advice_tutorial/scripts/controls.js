@@ -174,7 +174,6 @@ $(document).ready( function() {
         	
         	$('#vidCover').click( function() {
         		if(sessionStorage.getItem("play")){
-        			console.log("Cover clicked BEI...");
             		$('#play').click();
         		}
             	

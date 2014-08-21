@@ -28,9 +28,9 @@ Suggestions = {
         time_ = timeDiv.toString().split("/");
         timeSplit = time_[0].toString().split(".");
 		// GABE: timeSplit = player.getCurrentTime().toString().split(".");
-		console.log("current time: " + player.getCurrentTime());
-		console.log("timeSplit[0]: " + timeSplit[0]);
-		console.log("timeSplit[1]: " + timeSplit[1]);
+		//console.log("current time: " + player.getCurrentTime());
+		//console.log("timeSplit[0]: " + timeSplit[0]);
+		//console.log("timeSplit[1]: " + timeSplit[1]);
 		timeSec = timeSplit[0];
         // GABE made changes from substring(0,1)
 		timeFrac = timeSplit[1].substring(0,2);  // Trim this to 1 number to avoid over-fitting the time
