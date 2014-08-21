@@ -1,16 +1,67 @@
 <html>
 <head>
+<style>
+body {
+    font-family: Helvetica, Arial;
+}
+.button-link {
+    text-decoration: none;
+    padding: 15px 50px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.button-link:hover {
+    background: #356094;
+    border: solid 1px #2A4E77;
+    text-decoration: none;
+}
+.button-link:active {
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #2E5481;
+    border: solid 1px #203E5F;
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+</style>
 </head>
 <body>
 
-<div style="color:yellow; background-color:blue; border-style: solid; border-color:blue;"><b>Important:</b> Although the tutorial gives multiple chance of viewing the video. But in the actual task, the video ONLY plays once. Also there is ONLY 1 wrong move.</div>
 
-<center><h2>Instructions</h2></center>
-You will watch a PacMan game and your task is to identify the time in seconds when PacMan makes a wrong move. Below is a frame-by-frame sequence in a video that demonstrates when you should suggest a wrong move. The example below is just one case of a wrong move. Thus, when suggesting a wrong move, consider the 3 PacMan Rules as well as the efficiency and accuracy of PacMan.<br />
-<center><img src="../images/sample.png" width="630px" /></center>
+<center><h3>INSTRUCTIONS</h3></center>
 
+<div style="width: 750px; color: #ffcc00; background-color: #003366; border: 3px solid white; padding: 5px;"><b>Important:</b> Although the tutorial gives multiple chance of viewing the video. But in the actual task, the video ONLY plays once. Also there is ONLY 1 wrong move.</div>
 
-<center><h2>3 PacMan Rules</h2></center>
+<p>You will watch a PacMan game and your task is to identify the time in seconds when PacMan makes a wrong move. Below is a frame-by-frame sequence in a video that demonstrates when you should suggest a wrong move. The example below is just one case of a wrong move. Thus, when suggesting a wrong move, consider the 3 PacMan Rules as well as the efficiency and accuracy of PacMan.</p>
+<center><img src="../images/sample2.png" width="740px" /></center>
+<br />
+<center><div style="width: 570px; color: #ffcc00; background-color: #000000; border: 3px solid white; padding: 8px;">Please SCROLL DOWN and read the rest of the instructions in order to continue.</div></center>
+<br />
+<div id="rules">
+<center><h3>3 PACMAN RULES</h3></center>
 <br />
 1. The objective of this game is for PacMan to <b>eat all the pills</b> while <b>earning as many points</b> in order to win the game.<br />
 <center><img src="../images/pacman_env.png" /></center>
@@ -20,9 +71,9 @@ You will watch a PacMan game and your task is to identify the time in seconds wh
 
 3. PacMan can eat one of the 4 power pills and in doing so makes the Ghosts edible. (<b>TRICK:</b> To earn more points, an <b>edible Ghost is worth 200 points</b>, while a <b>pill is only worth 10 points</b>.)<br /><br />
 <center><img src="../images/edible_ghost.png" /></center><br />
+</div>
 
-<br />
-<center>- END -</center>
-
+<br /><br />
+<center><a href="#" onclick="parent.popup('popUpDiv')" class="button-link">I have read and understood all the instructions. CLICK TO CLOSE THIS WINDOW.</a></center>
 </body>
 </html>
