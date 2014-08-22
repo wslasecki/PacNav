@@ -175,7 +175,7 @@ function taskStart(){
  		var newUrl = tempUrl[0] + "=" + vidId;
  		console.log("newUrl: " + newUrl);
  		window.location = newUrl;
- 		
+ 		window.location.reload(true);
  		tutorial = finish;
 	}
 }
