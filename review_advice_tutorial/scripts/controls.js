@@ -112,13 +112,12 @@ $(document).ready( function() {
     
     // TODO: Move this to youtube.js
     // Step Forward/Backward buttons:
-    $('#stepb').click(function() {
+     $('#stepb').click(function() {
 	console.log("Seeking to (-.01): " + (player.getCurrentTime()-.01));
         player.seekTo(player.getCurrentTime()-.03);
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
-        signal = "STEP";
     });
     $('#stepf').click(function() {
 	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
@@ -126,25 +125,15 @@ $(document).ready( function() {
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
-        signal = "STEP";
     });
     // Jump Forward/Backward buttons:
     $('#jumpb').click(function() {
     console.log("Seeking to (-1): " + (player.getCurrentTime()-1));
-    	if(player.getPlayerState() == 0){
-    		 //player.playVideo();
-        	 player.pauseVideo();
-    	}
-    	
         player.seekTo(player.getCurrentTime()-.5);
-        signal = "STEP";
     });
     $('#jumpf').click(function() {
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
-    	
         player.seekTo(player.getCurrentTime()+.5);
-
-        signal = "STEP";
     });
 
 
