@@ -18,7 +18,7 @@ var tutorialMessages = [
 initiate();
 
 function initiate(){
-	if(sessionStorage.getItem("task")){
+	if(sessionStorage.getItem("task_real")){
 		//console.log("NO TUTORIAL");
 		instructions.innerHTML = "";
 		document.getElementById("suggestContainer").style.top = "19px";
@@ -57,7 +57,7 @@ function tutorialStart(){
 	//highlight("play");
 	instructions.innerHTML = tutorialMessages[1];
 	
-	sessionStorage.setItem("play", true);
+	sessionStorage.setItem("play_real", true);
 }
 
 function tutorialWait(){
@@ -144,7 +144,7 @@ function taskStart(){
 		var vidId = gup('video');		
 		var url = window.location.href;
 		
-		sessionStorage.setItem("task", true);		
+		sessionStorage.setItem("task_real", true);		
  		//window.location = url.slice(0, -12) + vidId;	
  		var tempUrl = url.split("=");
  		var newUrl = tempUrl[0] + "=" + vidId;

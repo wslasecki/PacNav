@@ -90,7 +90,7 @@ Suggestions = {
                 window.setTimeout(Suggestions.addSugg, 150);
 
 				//Suggestions.addSugg(player.getCurrentTime());
-				if(sessionStorage.getItem("task")){
+				if(sessionStorage.getItem("task_real")){
 					$('#legion-submit').removeAttr('DISABLED');
 				}
 			

@@ -112,7 +112,7 @@ $(document).ready( function() {
         $('#playVid').click();
         
         // ADDED BY BEI
-        if(sessionStorage.getItem("task")){
+        if(sessionStorage.getItem("task_real")){
         	isFirstTime = false;
         }
     });
@@ -160,7 +160,7 @@ $(document).ready( function() {
     }
     else {
     	// ADDED BY BEI
-    	if(sessionStorage.getItem("task")){
+    	if(sessionStorage.getItem("task_real")){
         	
         	$('#vidCover').click( function() {
         		if(isFirstTime){
@@ -173,7 +173,7 @@ $(document).ready( function() {
         }else{
         	
         	$('#vidCover').click( function() {
-        		if(sessionStorage.getItem("play")){
+        		if(sessionStorage.getItem("play_real")){
             		$('#play').click();
         		}
             	

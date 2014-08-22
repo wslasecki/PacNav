@@ -21,7 +21,7 @@
       }
       else {
 		//vidId = gup('video');
-		if(sessionStorage.getItem("task")){
+		if(sessionStorage.getItem("task_real")){
 			vidId = gup('video');
 			//console.log("TASK TRUE");
 		}else{
@@ -104,7 +104,7 @@
           }
           
           if(isPause){
-          	if(!sessionStorage.getItem("task")){
+          	if(!sessionStorage.getItem("task_real")){
             	$('.suggestEntry').empty();
           		player.seekTo(player.getCurrentTime()-10);
           	}else{
@@ -117,7 +117,7 @@
 				$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
 				
-				if(!sessionStorage.getItem("task")){
+				if(!sessionStorage.getItem("task_real")){
 					$('#play').attr('value', 'Replay');
 				}else{
 					$('#play').hide();
@@ -130,7 +130,7 @@
         else if(event.data == YT.PlayerState.ENDED){
           var buttonVal = $('#play').attr('value');
           
-          if(sessionStorage.getItem("task")){
+          if(sessionStorage.getItem("task_real")){
 			   if(buttonVal == 'Mistake!'){
 				  $('#play').hide();
 			   }
@@ -160,7 +160,7 @@
           }
           }
           
-          if(sessionStorage.getItem("task")){
+          if(sessionStorage.getItem("task_real")){
           	$("#legion-submit").removeAttr("DISABLED"); //enables submit button if video has ended
           }
           
