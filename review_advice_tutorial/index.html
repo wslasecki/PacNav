@@ -33,9 +33,9 @@
 <script type="text/javascript">
    if(!sessionStorage.getItem("task")) window.onload = popup('popUpDiv');
 </script>
-<div id="instructionContainer">
+<!--div id="instructionContainer">
 <b>IMPORTANT:</b> Please read the <a href="#" onclick="popup('popUpDiv')">instructions</a> carefully before attempting.
-</div>
+</div-->
 <div id="videoContainer">
 	<!-- YouTube Player Container -->
 	<div id="vidCover"></div>
@@ -107,8 +107,8 @@
 
 
 <div id="submitContainer">
-	<!--form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit"-->
-	<form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit">
+	<form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit">
+	<!--form name="mturk_form" method="post" id="mturk_form" action="https://www.mturk.com/mturk/externalSubmit"-->
 		<input type="hidden" name="assignmentId" value="" id="assignmentId" />
         <input type="hidden" name="Video" value="" id="videoId" />
         <input type="hidden" name="Suggestion" value="" id="suggestId" />
