@@ -36,22 +36,26 @@ function initiate(){
 }
 
 function tutorialSetup(){
-	//console.log("tutorial setup");
+	console.log("tutorial setup");
 	//disable play and submit buttons
 	//$("#play").prop('disabled', true);
 	document.getElementById("play").style.display = "none";
 	
-	if(isClose){
-		instructions.innerHTML = tutorialMessages[0];
-		tutorial = tutorialStart;
-	}else{
-		tutorial = tutorialSetup;
-	}
+	console.log("isClose: " + isClose);
+	// instructions.innerHTML = tutorialMessages[0];
+// 	if(isClose){
+// 		tutorial = tutorialStart;
+// 	}else{
+// 		tutorial = tutorialSetup;
+// 	}
+	
+	instructions.innerHTML = tutorialMessages[0];
+	tutorial = tutorialStart;
 	
 }
 
 function tutorialStart(){
-	//console.log("tutorial start");
+	console.log("tutorial start");
     //$("#play").prop('disabled', false);
 	//$("#submitButton").prop('disabled', true);
 	
