@@ -166,7 +166,11 @@ function taskStart(){
 		var url = window.location.href;
 		//console.log("url: " + url);
 		sessionStorage.setItem("task", true);
- 		window.location = url.slice(0, -12) + vidId;
+ 		//window.location = url.slice(0, -12) + vidId;
+ 		var tempUrl = url.split("=");
+ 		var newUrl = tempUrl[0] + "=" + vidId;
+ 		console.log("newUrl: " + newUrl);
+ 		window.location = newUrl;
  		
  		tutorial = finish;
 	}

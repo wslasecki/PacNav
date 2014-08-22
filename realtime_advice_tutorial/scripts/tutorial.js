@@ -138,18 +138,15 @@ function taskStart(){
 		instructions.innerHTML = "";
 		
 		var videoPath = document.getElementById("vidPlayer").src;
-		var vidId = gup('video');
-
- 		//console.log("vidId: " + vidId);
- 		//console.log("videoPath: " + videoPath);
- 		// videoPath = changeUrl(videoPath, vidId);
-//  		document.getElementById("vidPlayer").src = videoPath;
-		
+		var vidId = gup('video');		
 		var url = window.location.href;
-		//console.log("url: " + url);
-		sessionStorage.setItem("task", true);
 		
- 		window.location = url.slice(0, -12) + vidId;		
+		sessionStorage.setItem("task", true);		
+ 		//window.location = url.slice(0, -12) + vidId;	
+ 		var tempUrl = url.split("=");
+ 		var newUrl = tempUrl[0] + "=" + vidId;
+ 		console.log("newUrl: " + newUrl);
+ 		window.location = newUrl;
  		
  		tutorial = finish;
 
