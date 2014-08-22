@@ -107,21 +107,14 @@
 
 
 <div id="submitContainer">
-	
-<form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit">
-	
-
-<input type="hidden" name="assignmentId" value="" id="assignmentId" />
-        
-<input type="hidden" name="Video" value="" id="videoId" />
-        
-<input type="hidden" name="Suggestion" value="" id="suggestId" />
-		
-<input type="submit" id="submitButtonReview" value="Submit HIT" style="display: none;"/>
-	
-</form>
-	
-<script language="Javascript">turkSetAssignmentID();</script>
+    <!--form name="mturk_form" method="post" id="mturk_form" action="https://workersandbox.mturk.com/mturk/externalSubmit"-->
+	<form name="mturk_form" method="post" id="mturk_form" action="">
+		<input type="hidden" name="assignmentId" value="" id="assignmentId" />
+        <input type="hidden" name="Video" value="" id="videoId" />
+        <input type="hidden" name="Suggestion" value="" id="suggestId" />
+		<input type="submit" id="submitButtonReview" value="Submit HIT" style="display: none;"/>
+	</form>
+	<script language="Javascript">turkSetAssignmentID();</script>
 </div>
 
 <!-- div id="submit-div">
