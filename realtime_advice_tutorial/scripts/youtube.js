@@ -82,7 +82,7 @@
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         //event.target.playVideo();
-        endTime = player.getDuration();
+        //endTime = player.getDuration();
         //player.setPlaybackRate(0.25);
 		player.setOption('cc', 'fontSize', -1);
 		//player.getOption('cc', 'track')['languageCode'] = "";
@@ -93,7 +93,7 @@
       }
 
       function onPlayerStateChange(event){
-        endTime = player.getDuration();
+        //endTime = player.getDuration();
         player.setPlaybackRate(0.25);
         if(event.data == YT.PlayerState.PLAYING){
         	//console.log("play playing");
@@ -184,10 +184,12 @@
       var timeTextVar;
       function startTimeSlider(){
         timeSliderVar = setInterval(function(){
+          endTime= player.getDuration();
           $( "#timeSlider" ).slider( "option", "value", player.getCurrentTime());
         }, 100);
         timeTextVar = setInterval(function(){
-          $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime));
+          endTime= player.getDuration();
+          $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
 
@@ -196,7 +198,8 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
-          $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime));
+          endTime= player.getDuration();
+          $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
 
