@@ -160,8 +160,8 @@
         }, 100);
         timeTextVar = setInterval(function(){
           if(player.getCurrentTime() >= parseInt(endTime)){
+            player.stopVideo();
             player.seekTo(0);
-          	player.pauseVideo();
 		    $('#play').attr('value', 'Replay');
 			$('#stepf').hide();
 			$('#stepb').hide();
@@ -178,16 +178,6 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
-          if(player.getCurrentTime() >= parseInt(endTime)){
-            player.seekTo(0);
-          	player.pauseVideo();
-		    $('#play').attr('value', 'Replay');
-			$('#stepf').hide();
-			$('#stepb').hide();
-			$('#jumpf').hide();
-			$('#jumpb').hide();
-			$('#inputContainer').hide(200);
-          }
           $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
