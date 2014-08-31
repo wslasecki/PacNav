@@ -83,7 +83,6 @@
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         endTime= parseInt(player.getDuration());
-       
         //event.target.playVideo();
         //player.setPlaybackRate(0.50);
 		player.setOption('cc', 'fontSize', -1);
@@ -163,12 +162,12 @@
           if(player.getCurrentTime() >= parseInt(endTime)){
             player.seekTo(0);
           	player.pauseVideo();
-					  $('#play').attr('value', 'Replay');
-					  $('#stepf').hide();
-					  $('#stepb').hide();
-					  $('#jumpf').hide();
-					  $('#jumpb').hide();
-					  $('#inputContainer').hide(200);
+		    $('#play').attr('value', 'Replay');
+			$('#stepf').hide();
+			$('#stepb').hide();
+			$('#jumpf').hide();
+			$('#jumpb').hide();
+			$('#inputContainer').hide(200);
           }
           $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
@@ -179,6 +178,16 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
+          if(player.getCurrentTime() >= parseInt(endTime)){
+            player.seekTo(0);
+          	player.pauseVideo();
+		    $('#play').attr('value', 'Replay');
+			$('#stepf').hide();
+			$('#stepb').hide();
+			$('#jumpf').hide();
+			$('#jumpb').hide();
+			$('#inputContainer').hide(200);
+          }
           $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }

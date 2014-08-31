@@ -82,7 +82,8 @@
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         //event.target.playVideo();
-        player.setPlaybackRate(0.25);
+        endTime = player.getDuration();
+        //player.setPlaybackRate(0.25);
 		player.setOption('cc', 'fontSize', -1);
 		//player.getOption('cc', 'track')['languageCode'] = "";
 		//alert(player.getOptions('cc'));
@@ -92,6 +93,8 @@
       }
 
       function onPlayerStateChange(event){
+        endTime = player.getDuration();
+        player.setPlaybackRate(0.25);
         if(event.data == YT.PlayerState.PLAYING){
         	//console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
