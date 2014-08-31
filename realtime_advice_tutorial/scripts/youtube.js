@@ -184,11 +184,11 @@
       var timeTextVar;
       function startTimeSlider(){
         timeSliderVar = setInterval(function(){
-          endTime= player.getDuration();
+          endTime = player.getDuration();
           $( "#timeSlider" ).slider( "option", "value", player.getCurrentTime());
         }, 100);
         timeTextVar = setInterval(function(){
-          endTime= player.getDuration();
+          endTime = player.getDuration();
           $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
@@ -198,7 +198,7 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
-          endTime= player.getDuration();
+          endTime = player.getDuration();
           $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }

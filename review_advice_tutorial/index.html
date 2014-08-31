@@ -125,17 +125,17 @@
 </div>	
 
 <div id="commentDiv" style="display:none;">
-  <iframe src="comment.html" width="100%" height="98%" frameborder="0"></iframe>
+  <iframe src="comment.html" width="100%" height="98%" frameborder="0" id="iframeComment"></iframe>
 </div>
-<input type="submit" id="submitButtonReview" value="Finish"  onclick="window.onload = popup('commentDiv'); document.getElementById('commentDiv').style.left = '360px'; document.getElementById('commentDiv').style.top = '70px';"  style="display: none;"/>
-	
-        
-<form id="submit-form">
-	<input type="hidden" name="money" id="money_field"></div>
-    <input type="hidden" name="assignmentId" id="submit-assignmentId">
-</form>
-</div>
-
+<script language="Javascript">
+    function reload() {
+        window.onload = popup('commentDiv');
+        document.getElementById('iframeComment').src += '';
+        document.getElementById('commentDiv').style.left = '360px';
+        document.getElementById('commentDiv').style.top = '70px';
+    }
+</script>
+<input type="button" id="submitButtonReview" onclick="reload();" value="Finish" style="display: none;"/>
 
 <div id="sidebar"></div>
 <div id="instructions"></div>
