@@ -28,6 +28,7 @@ function initiate(){
 		document.getElementById("submitButtonReview").style.display = "";
 		document.getElementById("tutorialMessages").style.display = "none";
 		document.getElementById("suggestInstruction").style.display = "none";
+		//document.getElementById("comments").style.display = "";
 		return;
 	}else{
 		window.addEventListener("click", mouseClicked, false);

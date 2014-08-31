@@ -76,6 +76,10 @@ $(document).ready( function() {
     $('#play').click(function() {
         var buttonVal = $('#play').attr('value');
         console.log("Play clicked: " + buttonVal);
+        
+        //endTime = player.getDuration();
+    	console.log("in control videoTime: " + endTime);
+    
 
         if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
             $('#play').attr('value', 'Wait!');
@@ -112,7 +116,8 @@ $(document).ready( function() {
     
     // TODO: Move this to youtube.js
     // Step Forward/Backward buttons:
-     $('#stepb').click(function() {
+    $('#stepb').click(function() {
+    //endTime = player.getDuration();
 	console.log("Seeking to (-.01): " + (player.getCurrentTime()-.01));
         player.seekTo(player.getCurrentTime()-.03);
         // A hack. Ensure the video frame refreshes
@@ -121,8 +126,21 @@ $(document).ready( function() {
          signal = "STEP";
     });
     $('#stepf').click(function() {
+    //endTime = player.getDuration();
+    console.log("in stepf videoTime: " + endTime);
 	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
-        player.seekTo(player.getCurrentTime()+.03);
+	console.log("getCurrentTime BEI: " + player.getCurrentTime()); 
+	console.log("endTime BEI: " + endTime); 
+	    
+	    
+		if(player.getCurrentTime()+.03 >= parseInt(endTime)){
+			//alert("got here!!!!");
+			player.seekTo( parseInt(endTime) -.01);
+			//player.seekTo(endTime -.01);
+		}else{
+			//alert("why?");
+        	player.seekTo(player.getCurrentTime()+.03);
+        }
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
@@ -130,19 +148,25 @@ $(document).ready( function() {
     });
     // Jump Forward/Backward buttons:
     $('#jumpb').click(function() {
+    //endTime = player.getDuration();
     console.log("Seeking to (-1): " + (player.getCurrentTime()-1));
         player.seekTo(player.getCurrentTime()-.5);
          signal = "STEP";
     });
     $('#jumpf').click(function() {
+    //endTime = player.getDuration();
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
+    if(player.getCurrentTime()+.5 >= parseInt(endTime)){
+		player.seekTo( parseInt(endTime) -.01);
+	}else{
         player.seekTo(player.getCurrentTime()+.5);
         signal = "STEP";
+    }
     });
 
 
     // NOTE: This is depricated, right?
-    $('#reset').click(function() {
+    $('#reset').click(function() {    
         $('#reset').attr('class', 'disabled');
         $('#play').attr('value', 'Play');
         $('#reset').attr('disabled', true);

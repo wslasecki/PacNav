@@ -166,26 +166,26 @@ body {
     text-decoration:none;
     text-shadow:1px 1px 0px #ffffff;
     position:absolute;
-    top:-103px;
-    left: -580px;
+    top:-97px;
+    left: 105px;
 }#submitButtonReview:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
     background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color:#dfdfdf;
     position:absolute;
-    top:-103px;
-    left: -580px;
+    top:-97px;
+    left: 105px;
 }#submitButtonReview:active {
      position:absolute;
-     top:-103px;
-     left: -580px;
+     top:-97px;
+     left: 105px;
     
 }#submitButtonReview:disabled {
     color: #b8b8b8;
     position:absolute;
-    top:-104px;
-    left: -580px;
+    top:-98px;
+    left: 105px;
 }
 
 /* .button:disabled {
@@ -345,15 +345,15 @@ appearance: none;
 #submitContainer {
   position: absolute;
   top: 460px;
-  left: 672px;
-  width: 297px;
+  left: 11px;
+  /*width: 297px;*/
+  width: 0px;
   text-align: center;
 }
 
 #suggestContainer {
   background: #292928;
-  position: absolute;
-  
+  position: absolute; 
   /*overflow-x: scroll;*/
   left: 14px;
   width: 287px;
@@ -407,6 +407,19 @@ appearance: none;
   color: #ffffff;
 }
 
+#comments {
+  	position: absolute;
+  	top: 250px;
+  	left: 9px;
+  	width: 320px;
+  	padding: 5px 5px 5px 5px;
+	margin: 5px;
+	font-family: verdana;
+	font-size: 20px;
+  	font-weight: bold;
+  	color: #ffcc00;	
+}
+
 /* pop up css */
 #blanket {
    background-color:#111;
@@ -425,4 +438,18 @@ appearance: none;
     width:800px;
     height:480px;
     z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/
+}
+
+#commentDiv {
+	position:absolute; 
+	background-color:#ababac;
+    border: solid 5px white;
+    padding: 5px 5px 5px 5px;
+    top: -378px;
+    left: 357px;
+    width:580px;
+    height:250px;
+	font-size: 18px; 
+	/*color: #ffcc00;*/
+	z-index: 9002;
 }
