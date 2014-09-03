@@ -1,35 +1,78 @@
 <html>
+<head>
+<style>
+body {
+    font-family: Helvetica, Arial;
+}
+.button-link {
+    text-decoration: none;
+    padding: 15px 50px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.button-link:hover {
+    background: #356094;
+    border: solid 1px #2A4E77;
+    text-decoration: none;
+}
+.button-link:active {
+    -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: #2E5481;
+    border: solid 1px #203E5F;
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+</style>
+</head>
 <body>
 
-<center>
-<table width="760px" bgcolor="#ffffff" cellpadding="5px">
-<tr><td>
-<b>INSTRUCTIONS:</b> This is a very simple task. You will watch a player play the game of PacMan and your task is to <b>identify the time in seconds when the player makes a wrong move, and suggest what the correct move is</b>. When selecting a wrong move, <b>consider the 3 PacMan Rules below</b> as well as the <b>efficiency and accuracy</b> of the player.<br />
-<ol>
-  <li><b>Watch the entire video once</b> before making any suggestion.</li>
-  <li>When a wrong move is made by the player, click the <b>Wait!</b> button.</li>
-  <li>It is important to select the <b>exact moment</b> the player made the <b>wrong move</b>. You can use the <b>Step Forward/Backward</b> or <b>Jump Forward/Backward</b> buttons to do this.</li>
-  <li>Make a suggestion whether the player should have went <b>Up, Down, Left</b> or <b>Right</b>. Then click <b>Submit HIT</b>.</li>
-</ol>
-<b>NOTE:</b> For this task, there is <b>ONLY <u>1 WRONG MOVE!</u></b>
-</td></tr></table>
-</center>
 
-<br />
+<center><h3>REVIEW ACTION INSTRUCTIONS</h3></center>
 
-<center><b>3 PACMAN RULES</b></center>
+<div style="width: 750px; color: #ffcc00; background-color: #003366; border: 3px solid white; padding: 5px;"><b>IMPORTANT:</b> You can replay the video <u>multiple times</u> and there is ONLY 1 wrong move.</div>
+
+<p>You will watch a PacMan game and your task is to identify the time in seconds when PacMan makes a wrong move, and suggest what the correct move is. Below is a frame-by-frame sequence in a video that demonstrates when you should suggest a wrong move. The example below is just one case of a wrong move. Thus, when suggesting a wrong move, consider the 3 PacMan Rules as well as the efficiency and accuracy of PacMan.</p>
+<center><img src="../images/sample2.png" width="740px" /></center>
 <br />
-1. The objective of this game is for Mrs. Pacman to <b>eat all the pills</b> while <b>earning as many points</b> in order to win the game.<br />
+<center><div style="width: 580px; color: #ffcc00; background-color: #000000; border: 3px solid white; padding: 8px;">Please SCROLL DOWN and read the rest of the instructions in order to continue.</div></center> 
+<br />
+<center><h3>3 PACMAN RULES</h3></center>
+<br />
+1. The objective of this game is for PacMan to <b>eat all the pills</b> while <b>earning as many points</b> in order to win the game.<br />
 <center><img src="../images/pacman_env.png" /></center>
 
-2. Mrs. Pacman will try to <b>evade the Ghosts</b>. If a Ghosts catches Mrs. Pacman, player loses.<br /><br />
+2. PacMan will try to <b>evade the Ghosts</b>. If a Ghosts catches PacMan, the game ends.<br /><br />
 <center><img src="../images/trap.png" /></center><br />
 
-3. Mrs. Pacman can eat one of the 4 power pills and in doing so makes the Ghosts edible. (<b>TRICK:</b> To earn more points, an <b>edible Ghost is worth 200 points</b>, while a <b>pill is only worth 10 points</b>.)<br /><br />
+3. PacMan can eat one of the 4 power pills and in doing so makes the Ghosts edible. (<b>TRICK:</b> To earn more points, an <b>edible Ghost is worth 200 points</b>, while a <b>pill is only worth 10 points</b>.)<br /><br />
 <center><img src="../images/edible_ghost.png" /></center><br />
 
-<br />
-<center>- END -</center>
+<br /><br />
+<center><a href="#" onclick="parent.popup('popUpDiv')" class="button-link">I have read and understood all the instructions. CLICK TO CLOSE THIS WINDOW.</a></center>
 
 </body>
 </html>
