@@ -151,6 +151,11 @@
           $( "#timeSlider" ).slider( "option", "value", player.getCurrentTime());
         }, 100);
         timeTextVar = setInterval(function(){
+          if(player.getCurrentTime() >= parseInt(endTime)){
+            player.stopVideo();
+            player.seekTo(0);
+            $('#play').attr('value', 'Replay');
+          }
           $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }

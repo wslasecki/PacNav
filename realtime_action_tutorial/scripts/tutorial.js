@@ -94,7 +94,7 @@ function tutorialAnswer(){
 		var time = timeSec + '.' + timeFrac;
 		time = parseFloat(time);
 		
-		if(time >= 4.00 && time <= 6.00){
+		if(time >= 5.48 && time <= 5.80){
 			console.log("CORRECT MISTAKE TIME");
 			if(action == "RIGHT"){
 				tutorialMessage = tutorialMessages.length - 2;
@@ -122,9 +122,9 @@ function tutorialAnswer(){
 			}
 			
 			if(mistakeNum <= 3){
-				if(time < 5.50){
+				if(time < 5.48){
 					tutorialMessage = tutorialMessages.length - 4;
-				}else if(time > 5.54){
+				}else if(time > 5.80){
 					tutorialMessage = tutorialMessages.length - 3;
 				}
 			}else{

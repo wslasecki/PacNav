@@ -12,7 +12,7 @@ var tutorialMessages = [
 'You can click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time.',
 'You can click <input type="button" class="button stepButton" id="stepb" value="< Step"></input> or <input type="button" class="button stepButton" id="stepf" value="Step >"> to find the exact time that PacMan is making a mistake. <br /><br /> After you find the exact mistake time, please click one of the four action buttons to give your suggestion.',
 "You just picked the correct mistake time, but your action suggestion was wrong! Please try to give another action suggestion.",
-'You have picked the wrong mistake time over three times.  PacMan makes a mistake at around 5.50 to 5.54. Please step to the time specified and identify that a mistake was made.',
+'You have picked the wrong mistake time over three times.  PacMan makes a mistake at around 5.48 to 5.55. Please step to the time specified and identify that a mistake was made.',
 'PacMan has not made any mistakes yet! <br /> Please click <input type="button" class="button" id="play" value="Continue"> to continue watching the video to find the mistake.',
 "PacMan has already made a mistake. <br />  Please replay the video or step back to find the time of the mistake.",
 "Good job! You just gave the correct suggestion. PacMan did make a mistake at that time! <br /><br />Click the screen to continue",
@@ -99,7 +99,7 @@ function tutorialAnswer(){
 		var time = timeSec + '.' + timeFrac;
 		time = parseFloat(time);
 		
-		if(time >= 5.50 && time <= 5.54){
+		if(time >= 5.48 && time <= 5.55){
 			console.log("CORRECT MISTAKE TIME");
 			if(action == "RIGHT"){
 				tutorialMessage = tutorialMessages.length - 2;
@@ -128,9 +128,9 @@ function tutorialAnswer(){
 			}
 			
 			if(mistakeNum <= 3){
-				if(time < 5.50){
+				if(time < 5.48){
 					tutorialMessage = tutorialMessages.length - 4;
-				}else if(time > 5.54){
+				}else if(time > 5.55){
 					tutorialMessage = tutorialMessages.length - 3;
 				}
 			}else{
