@@ -70,7 +70,7 @@ $(document).ready( function() {
     $('#jumpf').hide();
     $('#jumpb').hide();
     $('#inputContainer').hide();
-    document.getElementById('submitButton').disabled = true;
+    document.getElementById('submitButtonReview').disabled = true;
 
     // Event routing
     $('#play').click(function() {
@@ -122,7 +122,12 @@ $(document).ready( function() {
     });
     $('#stepf').click(function() {
 	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
-        player.seekTo(player.getCurrentTime()+.03);
+        //player.seekTo(player.getCurrentTime()+.03);
+        if(player.getCurrentTime()+.03 >= parseInt(endTime)){
+			player.seekTo( parseInt(endTime) -.01);
+		}else{
+        	player.seekTo(player.getCurrentTime()+.03);
+        }
         // A hack. Ensure the video frame refreshes
         //player.playVideo();
         //player.pauseVideo();
@@ -136,8 +141,12 @@ $(document).ready( function() {
     });
     $('#jumpf').click(function() {
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
-        player.seekTo(player.getCurrentTime()+.5);
-        signal = "STEP";
+        if(player.getCurrentTime()+.5 >= parseInt(endTime)){
+			player.seekTo( parseInt(endTime) -.01);
+		}else{
+			player.seekTo(player.getCurrentTime()+.5);
+			signal = "STEP";
+		}
     });
 
 

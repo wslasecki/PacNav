@@ -21,7 +21,7 @@
       }
       else {
 		//vidId = gup('video');
-		if(sessionStorage.getItem("task")){
+		if(sessionStorage.getItem("task_action_review")){
 			vidId = gup('video');
 			console.log("TASK TRUE");
 		}else{
@@ -81,6 +81,7 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
+        endTime= parseInt(player.getDuration());
         //event.target.playVideo();
         player.setPlaybackRate(0.50);
 		player.setOption('cc', 'fontSize', -1);
@@ -92,6 +93,8 @@
       }
 
       function onPlayerStateChange(event){
+        endTime= parseInt(player.getDuration());
+        player.setPlaybackRate(0.50);
         if(event.data == YT.PlayerState.PLAYING){
         	console.log("play playing");
         	$("#but_swi").addClass("_pause").removeClass("_play");
@@ -148,7 +151,7 @@
           $( "#timeSlider" ).slider( "option", "value", player.getCurrentTime());
         }, 100);
         timeTextVar = setInterval(function(){
-          $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime));
+          $("#playTime").html(((10 * (player.getCurrentTime() - startTime)) / 10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
 
@@ -157,7 +160,11 @@
         clearInterval(timeTextVar);
         isScrolling = true;
         timeTextVar = setInterval(function(){
-          $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime));
+          if(player.getCurrentTime() >= parseInt(endTime)){
+            player.stopVideo();
+            player.seekTo(0);
+          }
+          $("#playTime").html(((10 * ($( "#timeSlider" ).slider( "option", "value" ) - startTime))/10).toFixed(2) + "/" + (endTime - startTime).toFixed(2));
         }, 100);
       }
 

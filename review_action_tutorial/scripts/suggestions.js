@@ -50,7 +50,7 @@ Suggestions = {
         var suggestVal = document.getElementById('suggestContent').textContent;
         if(suggestVal.length >= 0)
         {
-            document.getElementById('submitButton').disabled = false;
+            document.getElementById('submitButtonReview').disabled = false;
         }
         document.getElementById('suggestId').value = suggestVal.trim();
         document.getElementById('videoId').value = getQueryVariable('video');

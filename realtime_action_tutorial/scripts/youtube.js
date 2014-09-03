@@ -1,4 +1,4 @@
-
+	  var isPause = false;
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -21,7 +21,7 @@
       }
       else {
 		//vidId = gup('video');
-		if(sessionStorage.getItem("task")){
+		if(sessionStorage.getItem("task_action_real")){
 			vidId = gup('video');
 			console.log("TASK TRUE");
 		}else{
@@ -102,19 +102,36 @@
             startTimeSlider();
             isScrolling = false;
           }
+          
+           if(isPause){
+          	if(!sessionStorage.getItem("task_action_real")){
+            	$('.suggestEntry').empty();
+          		player.seekTo(player.getCurrentTime()-10);
+          	}else{
+          		$('#play').hide();
+          	}
+          	
+          }
         }
         else if(event.data == YT.PlayerState.PAUSED){
         		console.log("play paused");
             	$("#but_swi").addClass("_play").removeClass("_pause");
 				$("#but_swi").html("Play");
-
+				
+				if(!sessionStorage.getItem("task_action_real")){
+					$('#play').attr('value', 'Replay');
+				}else{
+					$('#play').hide();
+				}
+				
+				isPause = true;
 
         }
         else if(event.data == YT.PlayerState.ENDED){
           console.log("PLAY END BEI");
           var buttonVal = $('#play').attr('value');
           
-          if(sessionStorage.getItem("task")){
+          if(sessionStorage.getItem("task_action_real")){
 			   if(buttonVal == 'Wait!'){
 				  $('#play').hide();
 			   }
@@ -127,7 +144,7 @@
 				  $('#inputContainer').hide(200);
 			  }
           }else{
-          		if (buttonVal == 'Wait!') {
+          		if (buttonVal == 'Mistake!') {
           	  console.log("play end and wait button change to replay");
               $('#play').attr('value', 'Replay');
           }

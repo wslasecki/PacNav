@@ -130,15 +130,13 @@ $(document).ready( function() {
     console.log("in stepf videoTime: " + endTime);
 	console.log("Seeking to (+.01): " + player.getCurrentTime()+.01);
 	console.log("getCurrentTime BEI: " + player.getCurrentTime()); 
-	console.log("endTime BEI: " + endTime); 
-	    
+	console.log("endTime BEI 3: " + endTime); 
+	console.log("endTime BEI 3: " + parseInt(endTime)); 
 	    
 		if(player.getCurrentTime()+.03 >= parseInt(endTime)){
-			//alert("got here!!!!");
 			player.seekTo( parseInt(endTime) -.01);
 			//player.seekTo(endTime -.01);
 		}else{
-			//alert("why?");
         	player.seekTo(player.getCurrentTime()+.03);
         }
         // A hack. Ensure the video frame refreshes

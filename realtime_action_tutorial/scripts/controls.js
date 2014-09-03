@@ -79,8 +79,8 @@ $(document).ready( function() {
         console.log("Play clicked: " + buttonVal);
 
         if (buttonVal == 'Continue' || buttonVal == 'Play' || buttonVal == 'Replay') {
-            $('#play').attr('value', 'Wait!');
-            //$('#play').attr('value', 'Mistake!');
+            //$('#play').attr('value', 'Wait!');
+            $('#play').attr('value', 'Mistake!');
             $('#stepf').hide();
             $('#stepb').hide();
             $('#jumpf').hide();
@@ -94,8 +94,8 @@ $(document).ready( function() {
 
         }
         
-        else if (buttonVal == 'Wait!') {
-        //else if (buttonVal == 'Mistake!') {
+        //else if (buttonVal == 'Wait!') {
+        else if (buttonVal == 'Mistake!') {
             $('#play').attr('value', 'Continue');
             // $('#stepf').show();
 //             $('#stepb').show();
@@ -112,7 +112,7 @@ $(document).ready( function() {
         $('#playVid').click();
         
         // ADDED BY BEI
-        if(sessionStorage.getItem("task")){
+        if(sessionStorage.getItem("task_action_real")){
         	isFirstTime = false;
         }
     });
@@ -160,7 +160,7 @@ $(document).ready( function() {
     }
     else {
     	// ADDED BY BEI
-    	if(sessionStorage.getItem("task")){
+    	if(sessionStorage.getItem("task_action_real")){
         	
         	$('#vidCover').click( function() {
         		if(isFirstTime){

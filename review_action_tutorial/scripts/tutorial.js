@@ -1,4 +1,4 @@
-var instructions = document.getElementById("tutorialMessages");
+var instructions = document.getElementById("tutorialContent");
 var tutorial;
 var next = false;
 var mistakeNum = 0;
@@ -6,25 +6,31 @@ var previousTime = 0;
 
 var tutorialMessage = 0;
 var tutorialMessages = [
-"In this study, you will watch a video with respect to a pac-man playing a game, and you will need to find the time that the pac-man is making a mistake and give action suggestion. There's only one mistake in each video. <br /><br />Click the screen to continue",
-"Click the Play button to watch the video. Remember that you can watch the video multiple times.",
-"If you think the pac-man is making a mistake, click Wait button and step back and forward to find the exact time that the pac-man is making a mistake and give action suggestion. If the video ends, click Replay button to watch it again. <br /><br />Click Wait or Replay button to continue",
-"You can click Replay button to watch the video again to find the mistake. <br /><br /> Click Replay button to continue",
-"After you find the exact mistake, please click one of the four action buttons to give your suggestion. <br /><br />Click one action button to continue",
+"In this study, you will watch a video with respect to a PacMan playing a game, and you will need to find the time that PacMan is making a mistake and give action suggestion. There's only one mistake in each video. <br /><br />Click the screen to continue",
+'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> to give your suggestion.',
+'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> to give your suggestion. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
+'You can click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time.',
+'You can click <input type="button" class="button stepButton" id="stepb" value="< Step"></input> or <input type="button" class="button stepButton" id="stepf" value="Step >"> to find the exact time that PacMan is making a mistake. <br /><br /> After you find the exact mistake time, please click one of the four action buttons to give your suggestion.',
 "You just picked the correct mistake time, but your action suggestion was wrong! Please try to give another action suggestion.",
-"You have picked the wrong mistake time over three times. PacMan makes a mistake at roughly 5.50. Please step to time 5.50 and give the correct action suggestion.",
-"PacMan has not made any mistakes yet! <br /> Please continue watching the video to find the mistake.",
+'You have picked the wrong mistake time over three times.  PacMan makes a mistake at around 5.50 to 5.54. Please step to the time specified and identify that a mistake was made.',
+'PacMan has not made any mistakes yet! <br /> Please click <input type="button" class="button" id="play" value="Continue"> to continue watching the video to find the mistake.',
 "PacMan has already made a mistake. <br />  Please replay the video or step back to find the time of the mistake.",
-"Good job! You just gave the correct suggestion. The pac-man did make a mistake at that time! <br /><br />Click the screen to continue",
-"Now you can start to do the real task to find the time that the pacman is making a mistake and give action suggestion! <br /><br />Click the screen to continue"
+"Good job! You just gave the correct suggestion. PacMan did make a mistake at that time! <br /><br />Click the screen to continue",
+"Now you can start to do the real task to find the time that PacMan is making a mistake and give action suggestion! <br /><br />Click the screen to continue"
 ];
 
 initiate();
 
 function initiate(){
-	if(sessionStorage.getItem("task")){
-		console.log("NO TUTORIAL");
+	if(sessionStorage.getItem("task_action_review")){
+		//console.log("NO TUTORIAL");
 		instructions.innerHTML = "";
+		document.getElementById("suggestContainer").style.top = "19px";	
+		document.getElementById("suggestContainer").style.height = "370px";
+		document.getElementById("submitButtonReview").style.display = "";
+		document.getElementById("tutorialMessages").style.display = "none";
+		document.getElementById("suggestInstruction").style.display = "none";
+		//document.getElementById("comments").style.display = "";
 		return;
 	}else{
 		window.addEventListener("click", mouseClicked, false);
@@ -32,10 +38,12 @@ function initiate(){
 	}
 }
 
+
 function tutorialSetup(){
 	console.log("tutorial setup");
 	//disable play and submit buttons
-	$("#play").prop('disabled', true);
+	//$("#play").prop('disabled', true);
+	document.getElementById("play").style.display = "none";
 	$("#submitButton").prop('disabled', true);
 	instructions.innerHTML = tutorialMessages[0];
 	tutorial = tutorialStart;
@@ -45,8 +53,10 @@ function tutorialStart(){
 	console.log("tutorial start");
     $("#play").prop('disabled', false);
 	$("#submitButton").prop('disabled', true);
+	
+	document.getElementById("play").style.display = "";
 	tutorial = tutorialWait;
-	highlight("play");
+	//highlight("play");
 	instructions.innerHTML = tutorialMessages[1];
 	
 	sessionStorage.setItem("play", true);
@@ -58,7 +68,7 @@ function tutorialWait(){
     	console.log("tutorial wait signal play");
 		$("#submitButton").prop('disabled', true);
 		tutorial = tutorialMistake;
-		highlight("play");
+		//highlight("play");
 		instructions.innerHTML = tutorialMessages[2];
 		instructions.style.top = "550px";
     }
@@ -128,7 +138,7 @@ function tutorialAnswer(){
 			}
 			
 			instructions.innerHTML = tutorialMessages[tutorialMessage];
-			tutorial = tutorialAnswer;
+			tutorial = tutorialWait;
 			previousTime = time;
 		}
 		
@@ -136,7 +146,7 @@ function tutorialAnswer(){
 	else if(signal == "PLAY"){	// after clicking the continue button   	
 		$("#submitButton").prop('disabled', true);
 		tutorial = tutorialMistake;
-		highlight("play");	
+		//highlight("play");	
 		instructions.innerHTML = tutorialMessages[2];
     	instructions.style.top = "550px";
 	}
@@ -167,7 +177,7 @@ function taskStart(){
 		
 		var url = window.location.href;
 		console.log("url: " + url);
-		sessionStorage.setItem("task", true);
+		sessionStorage.setItem("task_action_review", true);
  		window.location = url.slice(0, -11) + vidId;
  		
  		tutorial = finish;
