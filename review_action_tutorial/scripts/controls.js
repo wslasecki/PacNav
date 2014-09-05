@@ -140,6 +140,7 @@ $(document).ready( function() {
         signal = "STEP";
     });
     $('#jumpf').click(function() {
+    endTime = player.getDuration();
     console.log("Seeking to (+1): " + player.getCurrentTime()+1);
         if(player.getCurrentTime()+.5 >= parseInt(endTime)){
 			player.seekTo( parseInt(endTime) -.01);
