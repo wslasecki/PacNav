@@ -6,17 +6,17 @@ var previousTime = 0;
 
 var tutorialMessage = 0;
 var tutorialMessages = [
-"In this study, you will watch a video with respect to a PacMan playing a game, and you will need to find the time that PacMan is making a mistake and give action suggestion. There's only one mistake in each video. <br /><br />Click the screen to continue",
-'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> to give your suggestion.',
-'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> to give your suggestion. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
+"In this study, you will watch a video with respect to a PacMan playing a game, and you will need to find the time that PacMan is making a mistake and suggest the correct action. There's only one mistake in each video. <br /><br />Click the screen to continue",
+'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> and suggest the correct action.',
+'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Wait!"> and suggest the correct action. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
 'You can click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time.',
-'You can click <input type="button" class="button stepButton" id="stepb" value="< Step"></input> or <input type="button" class="button stepButton" id="stepf" value="Step >"> to find the exact time that PacMan is making a mistake. <br /><br /> After you find the exact mistake time, please click one of the four action buttons to give your suggestion.',
+'You can click <input type="button" class="button stepButton" id="stepb" value="< Step"></input> or <input type="button" class="button stepButton" id="stepf" value="Step >"> to find the exact time that PacMan is making a mistake. <br /><br /> After you find the exact mistake time, please click one of the four action buttons to suggest the correct action.',
 "You just picked the correct mistake time, but your action suggestion was wrong! Please try to give another action suggestion.",
-'You have picked the wrong mistake time over three times.  PacMan makes a mistake at around 5.48 to 5.55. Please step to the time specified and identify that a mistake was made.',
+'You have picked the wrong mistake time over three times.  PacMan makes a mistake at around 5.47 to 5.55. Please step to the time specified and suggest the correct action.',
 'PacMan has not made any mistakes yet! <br /> Please click <input type="button" class="button" id="play" value="Continue"> to continue watching the video to find the mistake.',
 "PacMan has already made a mistake. <br />  Please replay the video or step back to find the time of the mistake.",
 "Good job! You just gave the correct suggestion. PacMan did make a mistake at that time! <br /><br />Click the screen to continue",
-"Now you can start to do the real task to find the time that PacMan is making a mistake and give action suggestion! <br /><br />Click the screen to continue"
+"Now you can start to do the real task to find the time that PacMan is making a mistake and suggest the correct action! <br /><br />Click the screen to continue"
 ];
 
 initiate();

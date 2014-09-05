@@ -6,16 +6,16 @@ var previousTime = 0;
 
 var tutorialMessage = 0;
 var tutorialMessages = [
-"In this study, you will watch a video with respect to a PacMan playing a game, and you will need to point out the time that PacMan is making a mistake and give action suggestion. There's only one mistake in each video. <br /><br />Click the screen to continue",
-'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> to give your suggestion. ',
-'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> to give your suggestion. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
-"Please click one of the four action buttons to give your suggestion. <br /><br />Click one action button to continue",
-"You just picked the correct mistake time, but your action suggestion was wrong! Please try to give another action suggestion.",
-'You have made the wrong suggestion over three times. PacMan makes a mistake at around 5.50 to 6.00. Please step to the time specified and give your action suggestion.',
+"In this study, you will watch a video with respect to a PacMan playing a game, and you will need to point out the time that PacMan is making a mistake and suggest the correct action. There's only one mistake in each video. <br /><br />Click the screen to continue",
+'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> and suggest the correct action. ',
+'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> and suggest the correct action. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
+"Please click one of the four action buttons to suggest the correct action. <br /><br />Click one action button to continue",
+"You just picked the correct mistake time, but your action suggestion was wrong! Please try to suggest another action.",
+'You have made the wrong suggestion over three times. PacMan makes a mistake at around 5.47 to 6.00. Please step to the time specified and suggest the correct action.',
 'PacMan has not made any mistake yet! <br /><br /> Please click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time. <br /><br /> Remember that you can only watch it once in the real task.',
 'PacMan has already made a mistake. <br /><br />  Please click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time.',
 "Good job! You just gave the correct suggestion. PacMan did make a mistake at that time! <br /><br />Click the screen to continue",
-'Now you can start to do the real task to find the time that PacMan is making a mistake and give action suggestion! <br /><br />Remember that you can only watch the video once!<br /><br />Click the screen to continue'
+'Now you can start to do the real task to find the time that PacMan is making a mistake and suggest the correct action! <br /><br />Remember that you can only watch the video once!<br /><br />Click the screen to continue'
 ];
 
 initiate();
