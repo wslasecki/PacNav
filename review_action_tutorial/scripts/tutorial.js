@@ -99,7 +99,7 @@ function tutorialAnswer(){
 		var time = timeSec + '.' + timeFrac;
 		time = parseFloat(time);
 		
-		if(time >= 5.48 && time <= 5.55){
+		if(time >= 5.47 && time <= 5.55){
 			console.log("CORRECT MISTAKE TIME");
 			if(action == "RIGHT"){
 				tutorialMessage = tutorialMessages.length - 2;
@@ -128,7 +128,7 @@ function tutorialAnswer(){
 			}
 			
 			if(mistakeNum <= 3){
-				if(time < 5.48){
+				if(time < 5.47){
 					tutorialMessage = tutorialMessages.length - 4;
 				}else if(time > 5.55){
 					tutorialMessage = tutorialMessages.length - 3;
