@@ -8,7 +8,7 @@ var tutorialMessages = [
 "In this study, you will watch a video with respect to a PacMan playing a game, and you will need to point out the time that PacMan is making a mistake. There's only one mistake in each video. <br /><br />Click the screen to continue",
 'Click <input type="button" class="button" id="play" value="Play"> to watch the video. <br /><br />If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> to give your suggestion. ',
 'If you think PacMan is making a mistake, click <input type="button" class="button" id="play" value="Mistake!"> to give your suggestion. If the video ends, click <input type="button" class="button" id="play" value="Replay"> to watch it again.',
-'You have made the wrong suggestion over three times. PacMan makes a mistake at around 5.50 to 5.80. Please step to the time specified and identify that a mistake was made.',
+'You have made the wrong suggestion over three times. PacMan makes a mistake at around 5.47 to 5.80. Please step to the time specified and identify that a mistake was made.',
 'PacMan has not made any mistake yet! <br /><br /> Please click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time. <br /><br /> Remember that you can only watch it once in the real task.',
 'PacMan has already made a mistake. <br /><br />  Please click <input type="button" class="button" id="play" value="Replay"> to watch the video again to find the mistake time.',
 'Good job! You just gave the correct suggestion. The PacMan did make a mistake at that time! <br /><br />Click the screen to continue',
@@ -92,7 +92,7 @@ function answer(){
 		var time = timeSec + '.' + timeFrac;
 		time = parseFloat(time);
 		//console.log("time: " + time);
-		if(time >= 5.50 && time <= 5.80){
+		if(time >= 5.47 && time <= 5.80){
 			//console.log("CORRECT MISTAKE TIME");
 			$('#play').hide();
         	$('#stepf').hide();
@@ -107,7 +107,7 @@ function answer(){
 			//console.log("WRONG MISTAKE TIME");
 			//console.log("mistakeNum: " + mistakeNum);
 			if(mistakeNum < 3){
-				if(time < 5.50){
+				if(time < 5.47){
 					//console.log("time < 5.50");
 					tutorialMessage = 4;
 				}else if(time > 5.80){
